@@ -629,7 +629,7 @@
                 <div class="solution-card">
                     <div class="solution-icon">🎮</div>
                     <h3>Занимается каждый день</h3>
-                    <p>Ребенок получает персональные задания и квесты каждый день. Никакого принуждения - только удовольствие и естественное погружение в языковую среду через Roblox.</p>
+                    <p>Мы выстроили и сделали так, что ребенок увлекается самим процессом и хочет продолжать заниматься каждый день. Персональные задания и квесты создают естественную мотивацию.</p>
                 </div>
                 <div class="solution-card">
                     <div class="solution-icon">🎤</div>
@@ -802,13 +802,26 @@
     <section class="form-section" id="form">
         <div class="container">
             <h2>Записаться на бесплатный урок</h2>
-            <p class="form-subtitle">Заполните форму и мы свяжемся с вами в течение 30 минут</p>
+            <p class="form-subtitle">Процесс простой: выберите пакет → заполните форму → предоставьте логин Roblox для открытия доступа</p>
             
             <div class="form-container">
                 <form id="application-form">
                     <div class="form-group">
+                        <label for="package">Выберите пакет *</label>
+                        <select id="package" name="package" required>
+                            <option value="">Выберите пакет обучения</option>
+                            <option value="starter">STARTER - 19 990 ₽/месяц</option>
+                            <option value="premium">PREMIUM - 29 990 ₽/месяц (популярный)</option>
+                            <option value="vip">VIP - 59 990 ₽/месяц</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="child-name">Имя ребенка *</label>
                         <input type="text" id="child-name" name="child-name" required placeholder="Введите имя ребенка">
+                    </div>
+                    <div class="form-group">
+                        <label for="roblox-login">Логин в Roblox *</label>
+                        <input type="text" id="roblox-login" name="roblox-login" required placeholder="Логин ребенка в Roblox">
                     </div>
                     <div class="form-group">
                         <label for="english-level">Уровень английского *</label>
