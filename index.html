@@ -1,221 +1,523 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ELC Roblox English</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #ffffff;
-      color: #1a1a1a;
-    }
-    header {
-      background: #4CAF50;
-      padding: 20px;
-      color: #fff;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 24px;
-    }
-    header nav a {
-      color: #fff;
-      margin-left: 20px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .hero {
-      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Roblox_screen_example.png/1200px-Roblox_screen_example.png') center/cover no-repeat;
-      color: #fff;
-      text-align: center;
-      padding: 100px 20px;
-    }
-    .hero h2 {
-      font-size: 36px;
-      margin-bottom: 10px;
-    }
-    .hero p {
-      font-size: 20px;
-      margin-bottom: 20px;
-    }
-    .hero button {
-      background: #4CAF50;
-      color: #fff;
-      border: none;
-      padding: 15px 30px;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-    section {
-      padding: 60px 20px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    section h3 {
-      text-align: center;
-      font-size: 28px;
-      margin-bottom: 30px;
-    }
-    .features, .steps, .examples, .reviews {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      gap: 20px;
-    }
-    .card {
-      background: #f5f5f5;
-      padding: 20px;
-      border-radius: 8px;
-      flex: 1 1 250px;
-      text-align: center;
-    }
-    form {
-      max-width: 400px;
-      margin: 0 auto;
-      background: #f5f5f5;
-      padding: 20px;
-      border-radius: 8px;
-    }
-    form label {
-      display: block;
-      margin-bottom: 5px;
-      font-weight: bold;
-    }
-    form input, form button {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-sizing: border-box;
-    }
-    form button {
-      background: #4CAF50;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-    }
-    footer {
-      background: #333;
-      color: #ccc;
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELC Roblox English - Английский для детей в Roblox</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo::before {
+            content: "🎮";
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="25" cy="25" r="2" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1.5" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="1" fill="white" opacity="0.1"/><circle cx="90" cy="30" r="1.5" fill="white" opacity="0.1"/><circle cx="10" cy="70" r="1" fill="white" opacity="0.1"/></svg>');
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: slideInDown 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: slideInUp 1s ease-out 0.3s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+            animation: slideInUp 1s ease-out 0.6s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        @keyframes slideInDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideInUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        /* Screenshots Section */
+        .screenshots {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .screenshots h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .screenshot-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .screenshot-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Form Section */
+        .form-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .form-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <nav class="container">
+            <div class="logo">ELC Roblox English</div>
+            <ul class="nav-links">
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#features">Особенности</a></li>
+                <li><a href="#screenshots">Скриншоты</a></li>
+                <li><a href="#contact">Заявка</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <header>
-    <h1>ELC Roblox English</h1>
-    <nav>
-      <a href="#about">О курсе</a>
-      <a href="#steps">Как это работает</a>
-      <a href="#examples">Примеры</a>
-      <a href="#signup">Записаться</a>
-    </nav>
-  </header>
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Английский в Roblox!</h1>
+                <p>Увлекательный и эффективный способ выучить английский язык.<br>
+                Ваш ребенок не просто играет - он практикуется в разговорном английском!</p>
+                <a href="#contact" class="cta-button">Записаться на урок</a>
+            </div>
+        </div>
+    </section>
 
-  <section class="hero">
-    <h2>Английский через игру в Roblox</h2>
-    <p>Ваш ребенок учит разговорный английский, играя в любимую игру</p>
-    <button onclick="document.getElementById('signup').scrollIntoView({behavior: 'smooth'})">
-      Записаться бесплатно
-    </button>
-  </section>
+    <section class="features" id="features">
+        <div class="container">
+            <h2>Почему ELC Roblox English?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎮</div>
+                    <h3>Игровое обучение</h3>
+                    <p>Изучение английского через популярную платформу Roblox делает процесс увлекательным и естественным</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎤</div>
+                    <h3>Разговорная практика</h3>
+                    <p>Продвинутая система распознавания речи анализирует произношение и дает мгновенную обратную связь</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>Отслеживание прогресса</h3>
+                    <p>Система автоматически отслеживает успехи ребенка и адаптирует сложность заданий</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Социальное взаимодействие</h3>
+                    <p>Изучение в группе со сверстниками создает дополнительную мотивацию и делает процесс веселым</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Система достижений</h3>
+                    <p>Награды, бейджи и достижения мотивируют детей продолжать обучение</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Живая обратная связь</h3>
+                    <p>Мгновенная проверка произношения и исправление ошибок в реальном времени</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section id="about">
-    <h3>О курсе</h3>
-    <div class="features">
-      <div class="card">
-        <h4>🎮 Играем в Roblox</h4>
-        <p>Обучение в уникальном мире Roblox с увлекательными заданиями</p>
-      </div>
-      <div class="card">
-        <h4>🗣️ Разговорный английский</h4>
-        <p>Практика реальных фраз и диалогов прямо в игре</p>
-      </div>
-      <div class="card">
-        <h4>👩‍🏫 Носители языка</h4>
-        <p>Коррекция произношения и поддержка от профессиональных преподавателей</p>
-      </div>
-    </div>
-  </section>
+    <section class="screenshots" id="screenshots">
+        <div class="container">
+            <h2>Посмотрите, как это работает</h2>
+            <div class="screenshot-grid">
+                <div class="screenshot-card">
+                    <div class="screenshot-placeholder">
+                        🎮 Игровой процесс
+                    </div>
+                    <h3>Интерактивные уроки</h3>
+                    <p>Дети изучают новые слова и фразы через игровые задания в красочном мире Roblox</p>
+                </div>
+                <div class="screenshot-card">
+                    <div class="screenshot-placeholder">
+                        🎤 Произношение
+                    </div>
+                    <h3>Проверка речи</h3>
+                    <p>Система распознавания речи анализирует произношение и дает подсказки для улучшения</p>
+                </div>
+                <div class="screenshot-card">
+                    <div class="screenshot-placeholder">
+                        📊 Статистика
+                    </div>
+                    <h3>Прогресс обучения</h3>
+                    <p>Подробная статистика успехов, которую могут отслеживать и дети, и родители</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section id="steps">
-    <h3>Как это работает</h3>
-    <div class="steps">
-      <div class="card">
-        <h4>1️⃣ Регистрируйтесь на сайте</h4>
-        <p>Оставьте заявку и получите консультацию</p>
-      </div>
-      <div class="card">
-        <h4>2️⃣ Получаете ссылку на урок</h4>
-        <p>Подключайтесь к нашему Roblox-серверу</p>
-      </div>
-      <div class="card">
-        <h4>3️⃣ Ребенок играет и учится</h4>
-        <p>Выполняет задания на английском</p>
-      </div>
-      <div class="card">
-        <h4>4️⃣ Получаете отчет</h4>
-        <p>Мы расскажем о результатах вашего ребенка</p>
-      </div>
-    </div>
-  </section>
+    <section class="form-section" id="contact">
+        <div class="container">
+            <h2>Записаться на пробный урок</h2>
+            <div class="form-container">
+                <form id="application-form">
+                    <div class="form-group">
+                        <label for="child-name">Имя ребенка *</label>
+                        <input type="text" id="child-name" name="child-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="english-level">Уровень английского *</label>
+                        <select id="english-level" name="english-level" required>
+                            <option value="">Выберите уровень</option>
+                            <option value="beginner">Начинающий</option>
+                            <option value="elementary">Элементарный</option>
+                            <option value="intermediate">Средний</option>
+                            <option value="advanced">Продвинутый</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="parent-name">Имя родителя *</label>
+                        <input type="text" id="parent-name" name="parent-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <button type="submit" class="submit-btn">Отправить заявку</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
-  <section id="examples">
-    <h3>Примеры заданий</h3>
-    <div class="examples">
-      <div class="card">
-        <h4>💬 Задание в чате</h4>
-        <p>Say: Hello, my name is Alex</p>
-      </div>
-      <div class="card">
-        <h4>🎯 Преподаватель проверяет</h4>
-        <p>Мы слушаем, как ребенок произносит фразы</p>
-      </div>
-    </div>
-  </section>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 ELC Roblox English. Все права защищены. | Английский для детей через игру</p>
+        </div>
+    </footer>
 
-  <section id="reviews">
-    <h3>Отзывы родителей</h3>
-    <div class="reviews">
-      <div class="card">
-        <p>⭐⭐⭐⭐⭐<br>
-          "Сын обожает уроки! Раньше не мог заставить учить английский, а теперь сам ждет занятия."</p>
-      </div>
-      <div class="card">
-        <p>⭐⭐⭐⭐⭐<br>
-          "Очень живой формат, не похоже на скучную школу."</p>
-      </div>
-    </div>
-  </section>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
 
-  <section id="signup">
-    <h3>Запишитесь на бесплатный урок</h3>
-    <form>
-      <label for="name">Имя родителя</label>
-      <input type="text" id="name" name="name" placeholder="Ваше имя" required>
+        // Form submission
+        document.getElementById('application-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Collect form data
+            const formData = new FormData(this);
+            const data = {};
+            for (let [key, value] of formData.entries()) {
+                data[key] = value;
+            }
+            
+            // Show success message
+            alert('Спасибо за заявку! Мы свяжемся с вами в ближайшее время для записи на пробный урок.');
+            
+            // Reset form
+            this.reset();
+            
+            // In real implementation, you would send data to your server
+            console.log('Form data:', data);
+        });
 
-      <label for="age">Возраст ребенка</label>
-      <input type="number" id="age" name="child_age" placeholder="Возраст" required>
+        // Add some interactive animations
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${rate}px)`;
+            }
+        });
 
-      <label for="phone">Телефон</label>
-      <input type="tel" id="phone" name="phone" placeholder="+7..." required>
+        // Animate feature cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-      <button type="submit">Записаться</button>
-    </form>
-  </section>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
 
-  <footer>
-    © 2025 ELC Roblox English. Все права защищены.
-  </footer>
+        document.querySelectorAll('.feature-card, .screenshot-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
 </body>
 </html>
