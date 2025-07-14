@@ -82,6 +82,20 @@
             font-size: 14px;
         }
 
+        .header-contacts {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .header-phone {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
         .header-cta {
             background: rgba(255, 255, 255, 0.2);
             padding: 8px 20px;
@@ -94,6 +108,24 @@
 
         .header-cta:hover {
             background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .whatsapp-btn:hover {
+            background: #20b858;
             transform: translateY(-1px);
         }
 
@@ -114,8 +146,27 @@
 
         .hero .subtitle {
             font-size: 1.5rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             color: #e0e7ff;
+        }
+
+        .gift-message {
+            background: rgba(255, 215, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1.5rem 0;
+            border: 2px solid #ffd700;
+        }
+
+        .gift-message h3 {
+            color: #ffd700;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .gift-message p {
+            font-size: 1.1rem;
+            color: #fff;
         }
 
         .hero-logos {
@@ -253,6 +304,21 @@
             margin-top: 2rem;
         }
 
+        .gift-highlight {
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #333;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .gift-highlight h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
         /* Solution Section */
         .solution {
             padding: 80px 0;
@@ -305,8 +371,14 @@
 
         .price h2 {
             font-size: 2.5rem;
-            margin-bottom: 3rem;
+            margin-bottom: 1rem;
             color: #333;
+        }
+
+        .price-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
         }
 
         .price-packages {
@@ -519,15 +591,8 @@
         .form-section h2 {
             text-align: center;
             font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #333;
-        }
-
-        .form-subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            color: #666;
             margin-bottom: 3rem;
+            color: #333;
         }
 
         .form-container {
@@ -605,6 +670,20 @@
             padding: 2rem 0;
         }
 
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-phone {
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
@@ -635,6 +714,15 @@
             .logo-container {
                 gap: 10px;
             }
+
+            .header-contacts {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .header-phone {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -647,7 +735,13 @@
                 <div class="roblox-logo">🎮</div>
                 <div class="logo">ELC Kids Almaty - Roblox English</div>
             </div>
-            <a href="#form" class="header-cta">Записаться сейчас</a>
+            <div class="header-contacts">
+                <a href="tel:+77074569118" class="header-phone">+7 707 456 9118</a>
+                <a href="https://wa.me/77074569118" class="whatsapp-btn" target="_blank">
+                    📱 WhatsApp
+                </a>
+                <a href="#form" class="header-cta">Записаться сейчас</a>
+            </div>
         </nav>
     </header>
 
@@ -656,6 +750,11 @@
         <div class="container">
             <h1>Ваш ребенок заговорит на английском через 30 дней!</h1>
             <p class="subtitle">Революционная методика изучения английского через любимую игру Roblox</p>
+            
+            <div class="gift-message">
+                <h3>🎁 Сделайте ребенку незабываемый подарок!</h3>
+                <p>Спросите своего ребенка: "Хотел бы ты учить английский, играя в Roblox?" — он точно скажет "ДА!"</p>
+            </div>
             
             <div class="hero-logos">
                 <div class="hero-logo-elc">ELC</div>
@@ -679,7 +778,7 @@
                         <span class="result-text">детей хотят продолжать обучение</span>
                     </div>
                 </div>
-                <a href="#form" class="cta-button">Записаться на бесплатный урок</a>
+                <a href="#form" class="cta-button">Подарить ребенку мечту</a>
             </div>
         </div>
     </section>
@@ -706,8 +805,14 @@
                     <p>Между школой, кружками и домашними заданиями сложно найти время для изучения английского. Ребенок устает и не хочет учиться.</p>
                 </div>
             </div>
+            
+            <div class="gift-highlight">
+                <h3>🎮 А что если подарить ребенку то, о чем он мечтает?</h3>
+                <p>Обучение английскому через любимую игру Roblox — это не просто занятия, это ПОДАРОК, который ваш ребенок будет ценить каждый день!</p>
+            </div>
+            
             <div class="solution-intro">
-                Но что если ваш ребенок будет изучать английский с такой же страстью, с которой он играет в Roblox?
+                Представьте: ваш ребенок изучает английский с такой же страстью, с которой он играет в Roblox!
             </div>
         </div>
     </section>
@@ -715,7 +820,7 @@
     <!-- SOLUTION SECTION -->
     <section class="solution" id="solution">
         <div class="container">
-            <h2>Как работает ELC Kids Almaty - Roblox English</h2>
+            <h2>Как работает этот особенный подарок</h2>
             <div class="solution-grid">
                 <div class="solution-card">
                     <div class="solution-icon">🎮</div>
@@ -754,7 +859,8 @@
     <!-- PRICE SECTION -->
     <section class="price" id="price">
         <div class="container">
-            <h2>Выберите свой пакет обучения</h2>
+            <h2>Выберите подарок для вашего ребенка</h2>
+            <p class="price-subtitle">Инвестиция в будущее, которая принесет радость уже сегодня</p>
             <div class="price-packages">
                 
                 <!-- Starter Package -->
@@ -771,12 +877,12 @@
                         <li>Отчеты о прогрессе</li>
                     </ul>
                     
-                    <a href="#form" class="cta-button-small">Выбрать пакет</a>
+                    <a href="#form" class="cta-button-small">Подарить ребенку</a>
                 </div>
 
                 <!-- Premium Package -->
                 <div class="price-card featured">
-                    <div class="popular-badge">ПОПУЛЯРНЫЙ</div>
+                    <div class="popular-badge">ЛУЧШИЙ ПОДАРОК</div>
                     <div class="package-name">PREMIUM</div>
                     <div class="price-value">29 990 ₸</div>
                     <div class="price-period">в месяц</div>
@@ -789,7 +895,7 @@
                         <li>Дополнительные игровые активности</li>
                     </ul>
                     
-                    <a href="#form" class="cta-button-small">Выбрать пакет</a>
+                    <a href="#form" class="cta-button-small">Подарить ребенку</a>
                 </div>
 
                 <!-- VIP Package -->
@@ -807,7 +913,7 @@
                         <li>Ускоренная программа обучения</li>
                     </ul>
                     
-                    <a href="#form" class="cta-button-small">Выбрать пакет</a>
+                    <a href="#form" class="cta-button-small">Подарить ребенку</a>
                 </div>
                 
             </div>
@@ -821,18 +927,18 @@
     <!-- SOCIAL PROOF SECTION -->
     <section class="social-proof" id="social-proof">
         <div class="container">
-            <h2>Отзывы родителей</h2>
+            <h2>Отзывы родителей о подарке</h2>
             <div class="testimonials">
                 <div class="testimonial">
-                    <div class="testimonial-text">"Мой сын Максим всегда отказывался заниматься английским. Но когда узнал, что можно учиться через Roblox - глаза загорелись! Теперь сам напоминает о занятиях. За месяц выучил больше, чем за полгода в обычной школе."</div>
+                    <div class="testimonial-text">"Мой сын Максим всегда отказывался заниматься английским. Но когда я подарила ему доступ к обучению через Roblox - глаза загорелись! Теперь сам напоминает о занятиях. За месяц выучил больше, чем за полгода в обычной школе. Лучший подарок, который я могла сделать!"</div>
                     <div class="testimonial-author">- Анна Петрова, мама Максима (9 лет)</div>
                 </div>
                 <div class="testimonial">
-                    <div class="testimonial-text">"Не верила, что через игру можно серьезно изучать язык. Но результат поразил - дочка не только выучила новые слова, но и стала увереннее говорить. Преподаватель сказал, что у неё отличное произношение!"</div>
+                    <div class="testimonial-text">"Не верила, что через игру можно серьезно изучать язык. Но результат поразил - дочка не только выучила новые слова, но и стала увереннее говорить. Преподаватель сказал, что у неё отличное произношение! Ребенок счастлив, и я спокойна."</div>
                     <div class="testimonial-author">- Елена Сидорова, мама Софии (11 лет)</div>
                 </div>
                 <div class="testimonial">
-                    <div class="testimonial-text">"Артем занимается уже третий месяц. Прогресс невероятный! Теперь он комментирует английские видео на YouTube, говорит с друзьями на английском в играх. Это лучшие деньги, которые я потратил на образование сына."</div>
+                    <div class="testimonial-text">"Артем занимается уже третий месяц. Прогресс невероятный! Теперь он комментирует английские видео на YouTube, говорит с друзьями на английском в играх. Это лучший подарок и лучшие деньги, которые я потратил на образование сына."</div>
                     <div class="testimonial-author">- Михаил Волков, папа Артема (12 лет)</div>
                 </div>
             </div>
@@ -885,12 +991,13 @@
     <!-- FINAL CTA SECTION -->
     <section class="final-cta">
         <div class="container">
-            <h2>Не упустите возможность!</h2>
+            <h2>Подарите ребенку мечту уже сегодня!</h2>
             <div class="urgency">
                 ⏰ Количество мест в группах ограничено!<br>
-                Записывайтесь сейчас, чтобы гарантировать место для вашего ребенка.
+                Записывайтесь сейчас, чтобы гарантировать место для вашего ребенка.<br>
+                Сделайте подарок, который изменит будущее!
             </div>
-            <a href="#form" class="cta-button">Записаться на бесплатный урок</a>
+            <a href="#form" class="cta-button">Подарить английский в Roblox</a>
         </div>
     </section>
 
@@ -898,29 +1005,15 @@
     <section class="form-section" id="form">
         <div class="container">
             <h2>Записаться на бесплатный урок</h2>
-            <p class="form-subtitle">Процесс простой: выберите пакет → заполните форму → предоставьте логин Roblox для открытия доступа</p>
             
             <div class="form-container">
                 <form id="application-form">
                     <div class="form-group">
-                        <label for="package">Выберите пакет *</label>
-                        <select id="package" name="package" required>
-                            <option value="">Выберите пакет обучения</option>
-                            <option value="starter">STARTER - 19 990 ₸/месяц</option>
-                            <option value="premium">PREMIUM - 29 990 ₸/месяц (популярный)</option>
-                            <option value="vip">VIP - 59 990 ₸/месяц</option>
-                        </select>
+                        <label for="parent-name">Имя родителя *</label>
+                        <input type="text" id="parent-name" name="parent-name" required placeholder="Ваше имя">
                     </div>
                     <div class="form-group">
-                        <label for="child-name">Имя ребенка *</label>
-                        <input type="text" id="child-name" name="child-name" required placeholder="Введите имя ребенка">
-                    </div>
-                    <div class="form-group">
-                        <label for="roblox-login">Логин в Roblox *</label>
-                        <input type="text" id="roblox-login" name="roblox-login" required placeholder="Логин ребенка в Roblox">
-                    </div>
-                    <div class="form-group">
-                        <label for="english-level">Уровень английского *</label>
+                        <label for="english-level">Уровень английского ребенка *</label>
                         <select id="english-level" name="english-level" required>
                             <option value="">Выберите уровень</option>
                             <option value="beginner">Начинающий (не знает английский)</option>
@@ -928,10 +1021,6 @@
                             <option value="intermediate">Средний (может общаться)</option>
                             <option value="advanced">Продвинутый (свободно говорит)</option>
                         </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="parent-name">Имя родителя *</label>
-                        <input type="text" id="parent-name" name="parent-name" required placeholder="Ваше имя">
                     </div>
                     <div class="form-group">
                         <label for="phone">Телефон *</label>
@@ -950,7 +1039,11 @@
     <!-- FOOTER -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 ELC Kids Almaty - Roblox English. Английский для детей, который работает! | Поддержка: info@myelc.net</p>
+            <div class="footer-content">
+                <a href="tel:+77074569118" class="footer-phone">📞 +7 707 456 9118</a>
+                <p>&copy; 2025 ELC Kids Almaty - Roblox English. Английский для детей, который работает!</p>
+                <p>Поддержка: info@myelc.net</p>
+            </div>
         </div>
     </footer>
 
@@ -981,11 +1074,8 @@
             
             // Prepare message for Telegram
             const message = `🎮 НОВАЯ ЗАЯВКА ELC Kids Almaty - Roblox English!\n\n` +
-                `📦 Пакет: ${data.package}\n` +
-                `👶 Имя ребенка: ${data['child-name']}\n` +
-                `🎮 Логин Roblox: ${data['roblox-login']}\n` +
-                `📚 Уровень английского: ${data['english-level']}\n` +
                 `👨‍👩‍👧‍👦 Родитель: ${data['parent-name']}\n` +
+                `📚 Уровень английского ребенка: ${data['english-level']}\n` +
                 `📞 Телефон: ${data.phone}\n\n` +
                 `⏰ Время заявки: ${new Date().toLocaleString('ru-RU')}`;
 
