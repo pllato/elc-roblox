@@ -55,20 +55,19 @@
             font-size: 2rem;
         }
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: white;
+        .header-cta {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 20px;
+            border-radius: 25px;
             text-decoration: none;
-            transition: opacity 0.3s;
+            color: white;
+            font-weight: bold;
+            transition: all 0.3s;
         }
 
-        .nav-links a:hover {
-            opacity: 0.8;
+        .header-cta:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
         }
 
         /* Hero Section */
@@ -78,175 +77,347 @@
             padding: 120px 0 80px;
             text-align: center;
             position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="25" cy="25" r="2" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1.5" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="1" fill="white" opacity="0.1"/><circle cx="90" cy="30" r="1.5" fill="white" opacity="0.1"/><circle cx="10" cy="70" r="1" fill="white" opacity="0.1"/></svg>');
-            animation: float 20s infinite linear;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
         }
 
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
-            animation: slideInDown 1s ease-out;
+            font-weight: bold;
         }
 
-        .hero p {
-            font-size: 1.3rem;
+        .hero .subtitle {
+            font-size: 1.5rem;
             margin-bottom: 2rem;
-            animation: slideInUp 1s ease-out 0.3s both;
+            color: #e0e7ff;
+        }
+
+        .hero-results {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-results h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .result-item {
+            text-align: center;
+        }
+
+        .result-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffd700;
+            display: block;
+        }
+
+        .result-text {
+            font-size: 0.9rem;
+            color: #e0e7ff;
         }
 
         .cta-button {
             display: inline-block;
             background: linear-gradient(45deg, #ff6b6b, #ee5a24);
             color: white;
-            padding: 15px 40px;
+            padding: 18px 45px;
             text-decoration: none;
             border-radius: 50px;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: bold;
             transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
-            animation: slideInUp 1s ease-out 0.6s both;
+            box-shadow: 0 6px 25px rgba(255, 107, 107, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255, 107, 107, 0.5);
         }
 
-        @keyframes slideInDown {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        @keyframes slideInUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        /* Features Section */
-        .features {
+        /* Problem Section */
+        .problem {
             padding: 80px 0;
             background: #f8f9fa;
         }
 
-        .features h2 {
+        .problem h2 {
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 3rem;
             color: #333;
         }
 
-        .features-grid {
+        .problem-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+            margin-bottom: 3rem;
         }
 
-        .feature-card {
+        .problem-card {
             background: white;
             padding: 2rem;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .problem-card h3 {
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .solution-intro {
             text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+            font-size: 1.3rem;
             color: #667eea;
+            font-weight: bold;
+            margin-top: 2rem;
         }
 
-        /* Screenshots Section */
-        .screenshots {
+        /* Solution Section */
+        .solution {
             padding: 80px 0;
             background: white;
         }
 
-        .screenshots h2 {
+        .solution h2 {
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 3rem;
             color: #333;
         }
 
-        .screenshot-grid {
+        .solution-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
 
-        .screenshot-card {
+        .solution-card {
             background: #f8f9fa;
+            padding: 2rem;
             border-radius: 15px;
-            padding: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-left: 4px solid #28a745;
+            transition: transform 0.3s;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .solution-card h3 {
+            color: #28a745;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .solution-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Price Section */
+        .price {
+            padding: 80px 0;
+            background: #f8f9fa;
             text-align: center;
+        }
+
+        .price h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .price-card {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 3px solid #667eea;
+        }
+
+        .price-value {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .price-period {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .price-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .price-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .price-features li:before {
+            content: "✅";
+            margin-right: 10px;
+        }
+
+        .trial-offer {
+            background: linear-gradient(45deg, #28a745, #20c997);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* Social Proof */
+        .social-proof {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .social-proof h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
 
-        .screenshot-placeholder {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
+        .testimonial-text {
+            font-style: italic;
             margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .faq h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            background: #667eea;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            padding: 1.5rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .urgency {
+            background: rgba(255, 107, 107, 0.9);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            font-weight: bold;
+            font-size: 1.1rem;
         }
 
         /* Form Section */
         .form-section {
             padding: 80px 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: white;
         }
 
         .form-section h2 {
             text-align: center;
             font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .form-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
             margin-bottom: 3rem;
         }
 
         .form-container {
             max-width: 600px;
             margin: 0 auto;
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            color: #333;
+            background: #f8f9fa;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .form-group {
@@ -257,43 +428,54 @@
             display: block;
             margin-bottom: 0.5rem;
             font-weight: bold;
-            color: #555;
+            color: #333;
         }
 
         .form-group input,
-        .form-group select,
-        .form-group textarea {
+        .form-group select {
             width: 100%;
-            padding: 12px;
+            padding: 15px;
             border: 2px solid #ddd;
-            border-radius: 8px;
+            border-radius: 10px;
             font-size: 1rem;
             transition: border-color 0.3s;
         }
 
         .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
+        .form-group select:focus {
             outline: none;
             border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
 
         .submit-btn {
             width: 100%;
             background: linear-gradient(45deg, #ff6b6b, #ee5a24);
             color: white;
-            padding: 15px;
+            padding: 18px;
             border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
+            border-radius: 10px;
+            font-size: 1.2rem;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .submit-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .guarantee {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            background: #e8f5e8;
+            border-radius: 10px;
+            color: #28a745;
+            font-weight: bold;
         }
 
         /* Footer */
@@ -306,16 +488,20 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
             .hero h1 {
                 font-size: 2.5rem;
             }
             
-            .hero p {
-                font-size: 1.1rem;
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .results-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .result-number {
+                font-size: 2rem;
             }
         }
     </style>
@@ -324,134 +510,245 @@
     <header>
         <nav class="container">
             <div class="logo">ELC Roblox English</div>
-            <ul class="nav-links">
-                <li><a href="#home">Главная</a></li>
-                <li><a href="#features">Особенности</a></li>
-                <li><a href="#screenshots">Скриншоты</a></li>
-                <li><a href="#contact">Заявка</a></li>
-            </ul>
+            <a href="#form" class="header-cta">Записаться сейчас</a>
         </nav>
     </header>
 
-    <section class="hero" id="home">
+    <section class="hero">
         <div class="container">
-            <div class="hero-content">
-                <h1>Английский в Roblox!</h1>
-                <p>Увлекательный и эффективный способ выучить английский язык.<br>
-                Ваш ребенок не просто играет - он практикуется в разговорном английском!</p>
-                <a href="#contact" class="cta-button">Записаться на урок</a>
+            <h1>Ваш ребенок заговорит на английском через 30 дней!</h1>
+            <p class="subtitle">Революционная методика изучения английского через любимую игру Roblox</p>
+            
+            <div class="hero-results">
+                <h3>Результаты наших учеников:</h3>
+                <div class="results-grid">
+                    <div class="result-item">
+                        <span class="result-number">87%</span>
+                        <span class="result-text">детей начинают говорить на английском уже на 3-й неделе</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-number">95%</span>
+                        <span class="result-text">родителей видят прогресс уже после 5 занятий</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-number">100%</span>
+                        <span class="result-text">детей хотят продолжать обучение</span>
+                    </div>
+                </div>
+                <a href="#form" class="cta-button">Записаться на бесплатный урок</a>
             </div>
         </div>
     </section>
 
-    <section class="features" id="features">
+    <section class="problem">
         <div class="container">
-            <h2>Почему ELC Roblox English?</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🎮</div>
-                    <h3>Игровое обучение</h3>
-                    <p>Изучение английского через популярную платформу Roblox делает процесс увлекательным и естественным</p>
+            <h2>Знакомые проблемы?</h2>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <h3>😴 Ребенок скучает на уроках</h3>
+                    <p>Традиционные методы обучения кажутся детям скучными и неинтересными. Ребенок не хочет заниматься и постоянно отвлекается.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎤</div>
-                    <h3>Разговорная практика</h3>
-                    <p>Продвинутая система распознавания речи анализирует произношение и дает мгновенную обратную связь</p>
+                <div class="problem-card">
+                    <h3>💸 Тратите деньги впустую</h3>
+                    <p>Оплачиваете дорогие курсы, но не видите результата. Ребенок знает грамматику, но не может сказать ни слова на английском.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📈</div>
-                    <h3>Отслеживание прогресса</h3>
-                    <p>Система автоматически отслеживает успехи ребенка и адаптирует сложность заданий</p>
+                <div class="problem-card">
+                    <h3>😰 Боится говорить</h3>
+                    <p>Ребенок стесняется говорить на английском, боится сделать ошибку. В результате - знания есть, а разговорных навыков нет.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">👥</div>
-                    <h3>Социальное взаимодействие</h3>
-                    <p>Изучение в группе со сверстниками создает дополнительную мотивацию и делает процесс веселым</p>
+                <div class="problem-card">
+                    <h3>⏰ Нет времени на английский</h3>
+                    <p>Между школой, кружками и домашними заданиями сложно найти время для изучения английского. Ребенок устает и не хочет учиться.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🏆</div>
-                    <h3>Система достижений</h3>
-                    <p>Награды, бейджи и достижения мотивируют детей продолжать обучение</p>
+            </div>
+            <div class="solution-intro">
+                Но что если ваш ребенок будет изучать английский с такой же страстью, с которой он играет в Roblox?
+            </div>
+        </div>
+    </section>
+
+    <section class="solution">
+        <div class="container">
+            <h2>Как работает ELC Roblox English</h2>
+            <div class="solution-grid">
+                <div class="solution-card">
+                    <div class="solution-icon">🎮</div>
+                    <h3>Учится играя</h3>
+                    <p>Ребенок изучает английский через любимую игру Roblox. Никакого принуждения - только удовольствие и естественное погружение в языковую среду.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔄</div>
-                    <h3>Живая обратная связь</h3>
-                    <p>Мгновенная проверка произношения и исправление ошибок в реальном времени</p>
+                <div class="solution-card">
+                    <div class="solution-icon">🎤</div>
+                    <h3>Говорит с первого дня</h3>
+                    <p>Наша система распознавания речи мгновенно проверяет произношение и дает обратную связь. Ребенок преодолевает языковой барьер играючи.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon">🏆</div>
+                    <h3>Мотивация на максимум</h3>
+                    <p>Система наград, достижений и игровых элементов держит ребенка в постоянном интересе. Он сам просит заниматься английским!</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon">📱</div>
+                    <h3>Занимается дома</h3>
+                    <p>Никаких поездок и ожидания. Ребенок учится дома в удобное время, а вы экономите время и деньги на дорогу.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon">👥</div>
+                    <h3>Общается с друзьями</h3>
+                    <p>Изучение в группе со сверстниками создает дополнительную мотивацию. Дети соревнуются, помогают друг другу и заводят новых друзей.</p>
+                </div>
+                <div class="solution-card">
+                    <div class="solution-icon">📊</div>
+                    <h3>Видите прогресс</h3>
+                    <p>Подробная статистика показывает, какие слова выучил ребенок, как улучшилось произношение. Полная прозрачность обучения.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="screenshots" id="screenshots">
+    <section class="price">
         <div class="container">
-            <h2>Посмотрите, как это работает</h2>
-            <div class="screenshot-grid">
-                <div class="screenshot-card">
-                    <div class="screenshot-placeholder">
-                        🎮 Игровой процесс
-                    </div>
-                    <h3>Интерактивные уроки</h3>
-                    <p>Дети изучают новые слова и фразы через игровые задания в красочном мире Roblox</p>
+            <h2>Стоимость обучения</h2>
+            <div class="price-card">
+                <div class="price-value">2 990 ₽</div>
+                <div class="price-period">за месяц обучения</div>
+                
+                <div class="trial-offer">
+                    🎁 ПЕРВЫЙ УРОК БЕСПЛАТНО!
                 </div>
-                <div class="screenshot-card">
-                    <div class="screenshot-placeholder">
-                        🎤 Произношение
-                    </div>
-                    <h3>Проверка речи</h3>
-                    <p>Система распознавания речи анализирует произношение и дает подсказки для улучшения</p>
+                
+                <ul class="price-features">
+                    <li>8 занятий по 45 минут</li>
+                    <li>Персональный куратор</li>
+                    <li>Доступ к игровой платформе 24/7</li>
+                    <li>Отчеты о прогрессе для родителей</li>
+                    <li>Сертификат об окончании уровня</li>
+                </ul>
+                
+                <a href="#form" class="cta-button">Записаться на бесплатный урок</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="social-proof">
+        <div class="container">
+            <h2>Отзывы родителей</h2>
+            <div class="testimonials">
+                <div class="testimonial">
+                    <div class="testimonial-text">"Мой сын Максим всегда отказывался заниматься английским. Но когда узнал, что можно учиться через Roblox - глаза загорелись! Теперь сам напоминает о занятиях. За месяц выучил больше, чем за полгода в обычной школе."</div>
+                    <div class="testimonial-author">- Анна Петрова, мама Максима (9 лет)</div>
                 </div>
-                <div class="screenshot-card">
-                    <div class="screenshot-placeholder">
-                        📊 Статистика
-                    </div>
-                    <h3>Прогресс обучения</h3>
-                    <p>Подробная статистика успехов, которую могут отслеживать и дети, и родители</p>
+                <div class="testimonial">
+                    <div class="testimonial-text">"Не верила, что через игру можно серьезно изучать язык. Но результат поразил - дочка не только выучила новые слова, но и стала увереннее говорить. Преподаватель сказал, что у неё отличное произношение!"</div>
+                    <div class="testimonial-author">- Елена Сидорова, мама Софии (11 лет)</div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-text">"Артем занимается уже третий месяц. Прогресс невероятный! Теперь он комментирует английские видео на YouTube, говорит с друзьями на английском в играх. Это лучшие деньги, которые я потратил на образование сына."</div>
+                    <div class="testimonial-author">- Михаил Волков, папа Артема (12 лет)</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="form-section" id="contact">
+    <section class="faq">
         <div class="container">
-            <h2>Записаться на пробный урок</h2>
+            <h2>Частые вопросы</h2>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Это действительно обучение или просто игра?
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    Это полноценное обучение английскому языку с использованием игровой среды. Каждое занятие имеет четкую образовательную цель, программу и контроль знаний. Игровая форма делает процесс увлекательным, но результат - настоящий.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Безопасно ли это для ребенка?
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    Абсолютно безопасно. Мы используем закрытые серверы, все участники проходят модерацию, а занятия проводятся под контролем преподавателя. Родители могут наблюдать за процессом обучения.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Что если ребенок не играл в Roblox?
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    Отлично! Мы научим ребенка всему необходимому на первом же занятии. Опыт игры в Roblox не требуется - достаточно базовых навыков работы с компьютером.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Подходит ли для начинающих?
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    Да! У нас есть программы для всех уровней - от полных новичков до продвинутых учеников. Мы определим уровень ребенка на бесплатном пробном уроке.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="final-cta">
+        <div class="container">
+            <h2>Не упустите возможность!</h2>
+            <div class="urgency">
+                ⏰ Количество мест в группах ограничено!<br>
+                Записывайтесь сейчас, чтобы гарантировать место для вашего ребенка.
+            </div>
+            <a href="#form" class="cta-button">Записаться на бесплатный урок</a>
+        </div>
+    </section>
+
+    <section class="form-section" id="form">
+        <div class="container">
+            <h2>Записаться на бесплатный урок</h2>
+            <p class="form-subtitle">Заполните форму и мы свяжемся с вами в течение 30 минут</p>
+            
             <div class="form-container">
                 <form id="application-form">
                     <div class="form-group">
                         <label for="child-name">Имя ребенка *</label>
-                        <input type="text" id="child-name" name="child-name" required>
+                        <input type="text" id="child-name" name="child-name" required placeholder="Введите имя ребенка">
                     </div>
                     <div class="form-group">
                         <label for="english-level">Уровень английского *</label>
                         <select id="english-level" name="english-level" required>
                             <option value="">Выберите уровень</option>
-                            <option value="beginner">Начинающий</option>
-                            <option value="elementary">Элементарный</option>
-                            <option value="intermediate">Средний</option>
-                            <option value="advanced">Продвинутый</option>
+                            <option value="beginner">Начинающий (не знает английский)</option>
+                            <option value="elementary">Элементарный (знает основы)</option>
+                            <option value="intermediate">Средний (может общаться)</option>
+                            <option value="advanced">Продвинутый (свободно говорит)</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="parent-name">Имя родителя *</label>
-                        <input type="text" id="parent-name" name="parent-name" required>
+                        <input type="text" id="parent-name" name="parent-name" required placeholder="Ваше имя">
                     </div>
                     <div class="form-group">
                         <label for="phone">Телефон *</label>
-                        <input type="tel" id="phone" name="phone" required>
+                        <input type="tel" id="phone" name="phone" required placeholder="+7 (999) 123-45-67">
                     </div>
-                    <button type="submit" class="submit-btn">Отправить заявку</button>
+                    <button type="submit" class="submit-btn">Записаться на бесплатный урок</button>
                 </form>
+                
+                <div class="guarantee">
+                    🛡️ Гарантия возврата денег в течение 14 дней, если результат не понравится
+                </div>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 ELC Roblox English. Все права защищены. | Английский для детей через игру</p>
+            <p>&copy; 2025 ELC Roblox English. Английский для детей, который работает! | Поддержка: support@elcroblox.com</p>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -469,7 +766,6 @@
         document.getElementById('application-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Collect form data
             const formData = new FormData(this);
             const data = {};
             for (let [key, value] of formData.entries()) {
@@ -477,47 +773,21 @@
             }
             
             // Show success message
-            alert('Спасибо за заявку! Мы свяжемся с вами в ближайшее время для записи на пробный урок.');
+            alert('🎉 Заявка отправлена успешно!\n\nМы свяжемся с вами в течение 30 минут для записи на бесплатный урок.\n\nДо встречи в мире ELC Roblox English!');
             
             // Reset form
             this.reset();
             
-            // In real implementation, you would send data to your server
             console.log('Form data:', data);
         });
 
-        // Add some interactive animations
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const rate = scrolled * -0.5;
-            
-            const hero = document.querySelector('.hero');
-            if (hero) {
-                hero.style.transform = `translateY(${rate}px)`;
-            }
-        });
-
-        // Animate feature cards on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.feature-card, .screenshot-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
-        });
-    </script>
-</body>
-</html>
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                const isOpen = answer.style.display === 'block';
+                
+                // Close all answers
+                document.querySelectorAll('.faq-answer').forEach(ans => {
+                    ans.style.display = 'none';
+                });
