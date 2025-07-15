@@ -40,6 +40,30 @@
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://api.telegram.org">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KXX8KHRP0B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KXX8KHRP0B', {
+            page_title: 'ELC Kids Almaty - Английский для детей через Roblox',
+            page_location: window.location.href,
+            anonymize_ip: true,
+            allow_google_signals: false
+        });
+        
+        // Custom events для отслеживания
+        function trackEvent(action, category, label) {
+            gtag('event', action, {
+                event_category: category,
+                event_label: label,
+                value: 1
+            });
+        }
+    </script>
     
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
