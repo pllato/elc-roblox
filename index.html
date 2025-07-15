@@ -48,6 +48,8 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
+        
+        // Google Analytics 4
         gtag('config', 'G-KXX8KHRP0B', {
             page_title: 'ELC Kids Almaty - Английский для детей через Roblox',
             page_location: window.location.href,
@@ -55,12 +57,22 @@
             allow_google_signals: false
         });
         
+        // Google Ads Conversion Tracking
+        gtag('config', 'AW-1008798998');
+        
         // Custom events для отслеживания
         function trackEvent(action, category, label) {
             gtag('event', action, {
                 event_category: category,
                 event_label: label,
                 value: 1
+            });
+        }
+        
+        // Function to track lead conversion
+        function trackLeadConversion() {
+            gtag('event', 'conversion', {
+                'send_to': 'AW-1008798998/1T4qCO2EiYUBEJaahOED'
             });
         }
     </script>
