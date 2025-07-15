@@ -563,6 +563,137 @@
             margin-bottom: 1rem;
         }
 
+        /* Teachers Section */
+        .teachers {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .teachers h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .teachers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .teacher-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s;
+        }
+
+        .teacher-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .teacher-avatar {
+            margin-bottom: 1rem;
+        }
+
+        .teacher-card h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+        }
+
+        .teacher-role {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .teacher-qualifications {
+            list-style: none;
+            text-align: left;
+        }
+
+        .teacher-qualifications li {
+            padding: 0.5rem 0;
+            color: #555;
+        }
+
+        /* Guarantee Section */
+        .guarantee-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+        }
+
+        .guarantee-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        .guarantee-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .guarantee-badge {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .guarantee-badge h3 {
+            font-size: 1.8rem;
+            margin-top: 1rem;
+            color: #ffd700;
+        }
+
+        .guarantee-text h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .guarantee-list {
+            list-style: none;
+        }
+
+        .guarantee-list li {
+            padding: 1rem 0;
+            font-size: 1.1rem;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .guarantee-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .guarantee-card {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .guarantee-card h4 {
+            color: #ffd700;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .guarantee-card p {
+            color: white;
+            line-height: 1.6;
+        }
+
         /* Price Section */
         .price {
             padding: 80px 0;
@@ -986,11 +1117,11 @@
                 padding: 0 15px;
             }
 
-            .problem, .solution, .price, .social-proof, .faq, .final-cta, .form-section {
+            .problem, .solution, .teachers, .guarantee-section, .price, .social-proof, .faq, .final-cta, .form-section {
                 padding: 60px 0;
             }
 
-            .problem h2, .solution h2, .price h2, .social-proof h2, .faq h2, .final-cta h2, .form-section h2 {
+            .problem h2, .solution h2, .teachers h2, .guarantee-section h2, .price h2, .social-proof h2, .faq h2, .final-cta h2, .form-section h2 {
                 font-size: 2rem;
                 margin-bottom: 2rem;
             }
@@ -1008,9 +1139,26 @@
                 transform: none;
             }
 
-            .problem-grid, .solution-grid, .price-packages, .testimonials {
+            .problem-grid, .solution-grid, .teachers-grid, .price-packages, .testimonials {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
+            }
+
+            .guarantee-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .guarantee-badge h3 {
+                font-size: 1.4rem;
+            }
+
+            .guarantee-list li {
+                font-size: 1rem;
+            }
+
+            .teacher-card h3 {
+                font-size: 1.2rem;
             }
 
             .price-card {
@@ -1160,6 +1308,92 @@
                     <div class="solution-icon"><span role="img" aria-label="статистика">📊</span></div>
                     <h3>Видите прогресс в изучении английского</h3>
                     <p>Подробная статистика показывает, какие английские слова выучил ребенок, как улучшилось произношение английского языка. Полная прозрачность обучения английскому для детей.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEACHERS SECTION -->
+    <section class="teachers" id="teachers">
+        <div class="container">
+            <h2>Наши преподаватели английского языка для детей</h2>
+            <div class="teachers-grid">
+                <div class="teacher-card">
+                    <div class="teacher-avatar">
+                        <span role="img" aria-label="учитель" style="font-size: 4rem;">👩‍🏫</span>
+                    </div>
+                    <h3>Анна Смирнова</h3>
+                    <p class="teacher-role">Ведущий преподаватель английского для детей</p>
+                    <ul class="teacher-qualifications">
+                        <li><span role="img" aria-label="сертификат">🎓</span> Педагогическое образование, TESOL сертификат</li>
+                        <li><span role="img" aria-label="опыт">📚</span> 8 лет опыта обучения детей английскому языку</li>
+                        <li><span role="img" aria-label="игры">🎮</span> Специализация: игровые методики обучения</li>
+                        <li><span role="img" aria-label="результат">🏆</span> 200+ успешных учеников</li>
+                    </ul>
+                </div>
+                <div class="teacher-card">
+                    <div class="teacher-avatar">
+                        <span role="img" aria-label="учитель" style="font-size: 4rem;">👨‍🏫</span>
+                    </div>
+                    <h3>Михаил Петров</h3>
+                    <p class="teacher-role">Специалист по Roblox-методике</p>
+                    <ul class="teacher-qualifications">
+                        <li><span role="img" aria-label="сертификат">🎓</span> Филологическое образование, Cambridge Certificate</li>
+                        <li><span role="img" aria-label="опыт">📚</span> 6 лет работы с детьми 6-12 лет</li>
+                        <li><span role="img" aria-label="технологии">💻</span> Эксперт в digital-обучении детей</li>
+                        <li><span role="img" aria-label="результат">🏆</span> Автор методики "Английский через Roblox"</li>
+                    </ul>
+                </div>
+                <div class="teacher-card">
+                    <div class="teacher-avatar">
+                        <span role="img" aria-label="учитель" style="font-size: 4rem;">👩‍🏫</span>
+                    </div>
+                    <h3>Елена Жанова</h3>
+                    <p class="teacher-role">Куратор VIP-программ</p>
+                    <ul class="teacher-qualifications">
+                        <li><span role="img" aria-label="сертификат">🎓</span> Магистр лингвистики, IELTS 8.5</li>
+                        <li><span role="img" aria-label="опыт">📚</span> 10 лет в сфере детского образования</li>
+                        <li><span role="img" aria-label="психология">🧠</span> Сертификат детской психологии</li>
+                        <li><span role="img" aria-label="результат">🏆</span> 95% учеников достигают целей</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GUARANTEE SECTION -->
+    <section class="guarantee-section" id="guarantee">
+        <div class="container">
+            <h2>Гарантия результата изучения английского языка</h2>
+            <div class="guarantee-content">
+                <div class="guarantee-main">
+                    <div class="guarantee-badge">
+                        <span role="img" aria-label="щит" style="font-size: 4rem;">🛡️</span>
+                        <h3>100% Гарантия результата</h3>
+                    </div>
+                    <div class="guarantee-text">
+                        <h4>Мы настолько уверены в эффективности нашей методики обучения английскому языку для детей, что даем гарантии:</h4>
+                        <ul class="guarantee-list">
+                            <li><span role="img" aria-label="галочка">✅</span> <strong>87% детей начнут говорить на английском языке через 3 недели</strong> или вернем деньги</li>
+                            <li><span role="img" aria-label="галочка">✅</span> <strong>Ваш ребенок полюбит изучение английского</strong> или вернем деньги</li>
+                            <li><span role="img" aria-label="галочка">✅</span> <strong>Видимый прогресс уже после 5 занятий</strong> или вернем деньги</li>
+                            <li><span role="img" aria-label="галочка">✅</span> <strong>Ребенок сам будет просить заниматься английским</strong> или вернем деньги</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="guarantee-details">
+                    <div class="guarantee-card">
+                        <h4><span role="img" aria-label="деньги">💰</span> Возврат денег</h4>
+                        <p>Полный возврат средств в течение <strong>14 дней</strong> без объяснения причин, если результат не устроит</p>
+                    </div>
+                    <div class="guarantee-card">
+                        <h4><span role="img" aria-label="поддержка">📞</span> Персональная поддержка</h4>
+                        <p>Если ребенок не показывает прогресс, мы <strong>бесплатно</strong> корректируем программу и добавляем индивидуальные занятия</p>
+                    </div>
+                    <div class="guarantee-card">
+                        <h4><span role="img" aria-label="сертификат">📜</span> Документальное подтверждение</h4>
+                        <p>Все гарантии прописаны в договоре. <strong>Юридическая защита</strong> ваших прав как клиента</p>
+                    </div>
                 </div>
             </div>
         </div>
