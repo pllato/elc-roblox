@@ -243,6 +243,79 @@
             align-items: center;
         }
 
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .nav-menu a.active {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            z-index: 999;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-menu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+
+        .mobile-menu a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            padding-left: 2.5rem;
+        }
+
         .logo {
             font-size: 1.3rem;
             font-weight: bold;
@@ -1022,6 +1095,42 @@
                 padding: 160px 0 60px;
             }
 
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .header-contacts {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .header-phone {
+                font-size: 0.8rem;
+            }
+
+            .header-cta, .whatsapp-btn {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+
+            .logo {
+                font-size: 0.8rem;
+            }
+
+            .logo-container {
+                gap: 8px;
+            }
+
+            .elc-logo, .roblox-logo {
+                width: 30px;
+                height: 30px;
+                font-size: 10px;
+            }
+
             .hero h1 {
                 font-size: 2rem;
                 line-height: 1.2;
@@ -1189,17 +1298,44 @@
         <nav class="container">
             <div class="logo-container">
                 <div class="elc-logo">ELC</div>
-                <div class="roblox-logo">🎮</div>
-                <div class="logo">ELC Kids Almaty - Roblox English</div>
+                <div class="roblox-logo"><span role="img" aria-label="игровой контроллер">🎮</span></div>
+                <div class="logo">ELC Kids Almaty</div>
             </div>
+            
+            <!-- Desktop Menu -->
+            <ul class="nav-menu">
+                <li><a href="#solution">Курсы</a></li>
+                <li><a href="#teachers">Преподаватели</a></li>
+                <li><a href="#price">Цены</a></li>
+                <li><a href="#guarantee">Гарантии</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            
             <div class="header-contacts">
                 <a href="tel:+77074569118" class="header-phone">+7 707 456 9118</a>
                 <a href="https://wa.me/77074569118" class="whatsapp-btn" target="_blank">
-                    📱 WhatsApp
+                    <span role="img" aria-label="WhatsApp">📱</span> WhatsApp
                 </a>
                 <a href="#form" class="header-cta">Записаться сейчас</a>
             </div>
+            
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-toggle" aria-label="Открыть меню">
+                <span role="img" aria-label="меню">☰</span>
+            </button>
         </nav>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <ul>
+                <li><a href="#solution"><span role="img" aria-label="курсы">🎯</span> Как работает</a></li>
+                <li><a href="#teachers"><span role="img" aria-label="преподаватели">👨‍🏫</span> Преподаватели</a></li>
+                <li><a href="#price"><span role="img" aria-label="цены">💰</span> Цены на курсы</a></li>
+                <li><a href="#guarantee"><span role="img" aria-label="гарантии">🛡️</span> Гарантии</a></li>
+                <li><a href="#social-proof"><span role="img" aria-label="отзывы">💬</span> Отзывы</a></li>
+                <li><a href="#faq"><span role="img" aria-label="вопросы">❓</span> Частые вопросы</a></li>
+            </ul>
+        </div>
     </header>
 
     <!-- HERO SECTION -->
