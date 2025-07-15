@@ -129,11 +129,11 @@
             transform: translateY(-1px);
         }
 
-        /* Hero Section */
+        /* Hero Section - увеличенный верхний отступ */
         .hero {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 120px 0 80px;
+            padding: 140px 0 80px; /* Увеличен верхний отступ с 120px до 140px */
             text-align: center;
             position: relative;
         }
@@ -686,42 +686,151 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .hero {
+                padding: 160px 0 60px; /* Еще больше увеличен отступ для мобильных */
+            }
+
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
+                line-height: 1.2;
+                margin-bottom: 0.8rem;
             }
             
             .hero .subtitle {
-                font-size: 1.2rem;
+                font-size: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .gift-message {
+                padding: 1rem;
+                margin: 1rem 0;
+            }
+
+            .gift-message h3 {
+                font-size: 1.1rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .gift-message p {
+                font-size: 0.9rem;
+            }
+
+            .hero-results {
+                padding: 1.5rem;
+            }
+
+            .hero-results h3 {
+                font-size: 1.1rem;
             }
 
             .results-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
             }
 
             .result-number {
-                font-size: 2rem;
+                font-size: 1.8rem;
+            }
+
+            .result-text {
+                font-size: 0.8rem;
             }
 
             .hero-logos {
                 flex-direction: column;
                 gap: 15px;
+                margin: 1.5rem 0;
             }
 
-            .logo {
+            .hero-logo-elc, .hero-logo-roblox {
+                width: 60px;
+                height: 60px;
+                font-size: 16px;
+            }
+
+            .cta-button {
+                padding: 15px 30px;
                 font-size: 1rem;
             }
 
+            .logo {
+                font-size: 0.9rem;
+            }
+
             .logo-container {
-                gap: 10px;
+                gap: 8px;
+            }
+
+            .elc-logo, .roblox-logo {
+                width: 30px;
+                height: 30px;
+                font-size: 10px;
             }
 
             .header-contacts {
                 flex-direction: column;
-                gap: 8px;
+                gap: 5px;
             }
 
             .header-phone {
-                font-size: 0.9rem;
+                font-size: 0.8rem;
+            }
+
+            .header-cta, .whatsapp-btn {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            /* Секции */
+            .problem, .solution, .price, .social-proof, .faq, .final-cta, .form-section {
+                padding: 60px 0;
+            }
+
+            .problem h2, .solution h2, .price h2, .social-proof h2, .faq h2, .final-cta h2, .form-section h2 {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .gift-highlight {
+                padding: 1.5rem;
+                margin: 1.5rem 0;
+            }
+
+            .gift-highlight h3 {
+                font-size: 1.2rem;
+            }
+
+            .price-card.featured {
+                transform: none;
+            }
+
+            .problem-grid, .solution-grid, .price-packages, .testimonials {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .price-card {
+                padding: 2rem;
+            }
+
+            .package-name {
+                font-size: 1.3rem;
+            }
+
+            .price-value {
+                font-size: 2rem;
+            }
+
+            .form-container {
+                padding: 2rem;
+            }
+
+            .submit-btn {
+                font-size: 1rem;
             }
         }
     </style>
