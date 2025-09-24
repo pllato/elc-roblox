@@ -1222,10 +1222,10 @@
                 if (progress < 1) {
                     requestAnimationFrame(animate);
                 } else {
-                    // Determine winning segment
-                    const normalizedRotation = (currentRotation % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
+                    // Determine winning segment based on pointer position (top of wheel)
+                    const normalizedRotation = ((-currentRotation % (2 * Math.PI)) + (2 * Math.PI)) % (2 * Math.PI);
                     const segmentAngle = (2 * Math.PI) / wheelSegments.length;
-                    const winningSegmentIndex = Math.floor((2 * Math.PI - normalizedRotation + Math.PI / 2 + segmentAngle / 2) / segmentAngle) % wheelSegments.length;
+                    const winningSegmentIndex = Math.floor(normalizedRotation / segmentAngle) % wheelSegments.length;
                     const winningSegment = wheelSegments[winningSegmentIndex];
                     
                     isSpinning = false;
