@@ -743,6 +743,8 @@
                         <li>Возраст участников: 6-12 лет</li>
                         <li>Обязательная предварительная регистрация</li>
                         <li>Аккаунт в Roblox для получения призов</li>
+                        <li>Минимум 10 участников для проведения соревнования</li>
+                        <li>Каждый участник может принимать участие неограниченное количество раз</li>
                     </ul>
                 </div>
                 
@@ -877,9 +879,9 @@
             <div id="prize-modal" class="modal">
                 <div class="modal-content">
                     <h3>🎉 Поздравляем!</h3>
-                    <p>Вы выиграли пригласительный код:</p>
+                    <p>Вы выиграли приглашение на соревнования!</p>
                     <div class="prize-code" id="prize-code">LOADING...</div>
-                    <p>Введите ваши данные для получения кода:</p>
+                    <p><strong>Заполните регистрацию и отправьте:</strong></p>
                     
                     <form id="lottery-form">
                         <div class="form-group">
@@ -891,10 +893,14 @@
                             <input type="text" id="parent-name-lottery" name="parent-name-lottery" required placeholder="Имя родителя">
                         </div>
                         <div class="form-group">
+                            <label for="roblox-id-lottery">Roblox ID (логин) *</label>
+                            <input type="text" id="roblox-id-lottery" name="roblox-id-lottery" required placeholder="Введите логин в Roblox">
+                        </div>
+                        <div class="form-group">
                             <label for="phone-lottery">Телефон *</label>
                             <input type="tel" id="phone-lottery" name="phone-lottery" required placeholder="+7 (777) 123-45-67">
                         </div>
-                        <button type="submit" class="submit-btn">Получить код</button>
+                        <button type="submit" class="submit-btn">Отправить регистрацию</button>
                     </form>
                     <button class="close-modal" onclick="closePrizeModal()">×</button>
                 </div>
@@ -920,17 +926,8 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="child-age">Возраст ребенка <span class="required">*</span></label>
-                        <select id="child-age" name="child-age" required>
-                            <option value="">Выберите возраст</option>
-                            <option value="6">6 лет</option>
-                            <option value="7">7 лет</option>
-                            <option value="8">8 лет</option>
-                            <option value="9">9 лет</option>
-                            <option value="10">10 лет</option>
-                            <option value="11">11 лет</option>
-                            <option value="12">12 лет</option>
-                        </select>
+                        <label for="roblox-id">Roblox ID (логин) <span class="required">*</span></label>
+                        <input type="text" id="roblox-id" name="roblox-id" required placeholder="Введите логин в Roblox">
                     </div>
                     
 
@@ -1005,7 +1002,7 @@
             const message = `🏆 НОВАЯ ЗАЯВКА НА WEEKLY CHALLENGE!\n\n` +
                 `👨‍👩‍👧‍👦 Родитель: ${data['parent-name']}\n` +
                 `🧒 Имя ребенка: ${data['child-name']}\n` +
-                `🎂 Возраст: ${data['child-age']} лет\n` +
+                `🎮 Roblox ID: ${data['roblox-id']}\n` +
                 `🎫 ID пригласительного: ${data['invitation-id']}\n` +
                 `📞 Телефон: ${data.phone}\n\n` +
                 `📅 Соревнование: ${document.getElementById('next-saturday').textContent}\n` +
@@ -1289,9 +1286,11 @@
             const invitationCode = document.getElementById('prize-code').textContent;
             
             const message = `🎰 НОВЫЙ ПОБЕДИТЕЛЬ ЛОТЕРЕИ!\n\n` +
+                `🎉 Поздравляем! Выиграно приглашение на соревнования!\n` +
                 `🎫 Пригласительный код: ${invitationCode}\n` +
                 `🧒 Имя участника: ${formData.get('winner-name')}\n` +
                 `👨‍👩‍👧‍👦 Имя родителя: ${formData.get('parent-name-lottery')}\n` +
+                `🎮 Roblox ID: ${formData.get('roblox-id-lottery')}\n` +
                 `📞 Телефон: ${formData.get('phone-lottery')}\n\n` +
                 `⏰ Время: ${new Date().toLocaleString('ru-RU')}`;
 
@@ -1309,13 +1308,13 @@
                 });
 
                 if (response.ok) {
-                    alert(`Поздравляем! Ваш пригласительный код: ${invitationCode}\n\nМы свяжемся с вами для подтверждения. Используйте этот код при регистрации на Weekly Challenge!`);
+                    alert(`Поздравляем! Ваш пригласительный код: ${invitationCode}\n\nРегистрация отправлена! Мы свяжемся с вами для подтверждения. Используйте этот код при регистрации на Weekly Challenge!`);
                 } else {
                     throw new Error('Network response was not ok');
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert(`Ваш пригласительный код: ${invitationCode}\n\nСохраните этот код! Мы обработаем вашу заявку и свяжемся с вами в ближайшее время.`);
+                alert(`Ваш пригласительный код: ${invitationCode}\n\nРегистрация принята! Сохраните этот код! Мы обработаем вашу заявку и свяжемся с вами в ближайшее время.`);
             }
             
             closePrizeModal();
