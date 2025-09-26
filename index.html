@@ -933,12 +933,7 @@
 
                     
                     <div class="form-group">
-                        <label for="invitation-id">ID пригласительного <span class="required">*</span></label>
-                        <input type="text" id="invitation-id" name="invitation-id" required placeholder="Введите номер пригласительного">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">Телефон для связи <span class="required">*</span></label>
+                        <label for="phone">Телефон родителя <span class="required">*</span></label>
                         <input type="tel" id="phone" name="phone" required placeholder="+7 (777) 123-45-67">
                     </div>
                     
@@ -1003,8 +998,7 @@
                 `👨‍👩‍👧‍👦 Родитель: ${data['parent-name']}\n` +
                 `🧒 Имя ребенка: ${data['child-name']}\n` +
                 `🎮 Roblox ID: ${data['roblox-id']}\n` +
-                `🎫 ID пригласительного: ${data['invitation-id']}\n` +
-                `📞 Телефон: ${data.phone}\n\n` +
+                `📞 Телефон родителя: ${data.phone}\n\n` +
                 `📅 Соревнование: ${document.getElementById('next-saturday').textContent}\n` +
                 `⏰ Время заявки: ${new Date().toLocaleString('ru-RU')}`;
 
