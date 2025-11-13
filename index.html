@@ -83,11 +83,11 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '840312601920885');
+    fbq('init', '857676500044165');
     fbq('track', 'PageView');
     </script>
     <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=840312601920885&ev=PageView&noscript=1"
+    src="https://www.facebook.com/tr?id=857676500044165&ev=PageView&noscript=1"
     /></noscript>
     <!-- End Meta Pixel Code -->
     
@@ -1220,17 +1220,26 @@
             }
 
             .hero-form-container h3 {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
+            }
+
+            .hero-form-group label {
+                font-size: 0.9rem;
             }
 
             .hero-form-group input {
-                padding: 12px 15px;
+                padding: 12px;
                 font-size: 0.9rem;
             }
 
             .hero-form-btn {
                 padding: 14px;
                 font-size: 1rem;
+            }
+
+            .hero-guarantee {
+                font-size: 0.85rem;
+                padding: 0.8rem;
             }
 
             .hero-logo-elc, .hero-logo-roblox {
@@ -1778,10 +1787,10 @@
                 data[key] = value;
             }
             
-            const message = `🎮 БЫСТРАЯ ЗАЯВКА ELC Kids Almaty - Roblox English!\n\n` +
+            const message = `🎮 НОВАЯ ЗАЯВКА ELC Kids Almaty - Roblox English!\n\n` +
                 `👨‍👩‍👧‍👦 Родитель: ${data['parent-name']}\n` +
                 `📞 Телефон: ${data.phone}\n\n` +
-                `📍 Источник: Форма в Hero секции\n` +
+                `📍 Источник: Верхняя форма (Hero секция)\n` +
                 `⏰ Время заявки: ${new Date().toLocaleString('ru-RU')}`;
 
             try {
@@ -1798,12 +1807,19 @@
                 });
 
                 if (response.ok) {
-                    alert('🎉 Заявка отправлена успешно!\n\nМы свяжемся с вами в течение 30 минут для консультации.\n\nДо встречи в мире ELC Kids Almaty - Roblox English!');
+                    alert('🎉 Заявка отправлена успешно!\n\nМы свяжемся с вами в течение 30 минут для консультации и настройки доступа к платформе.\n\nДо встречи в мире ELC Kids Almaty - Roblox English!');
                     this.reset();
                     
                     if (typeof gtag !== 'undefined') {
                         trackLeadConversion();
                         trackEvent('form_submit', 'engagement', 'hero_form');
+                    }
+                    
+                    if (typeof fbq !== 'undefined') {
+                        fbq('track', 'Lead', {
+                            content_name: 'Hero Form Submission',
+                            content_category: 'Lead Generation'
+                        });
                     }
                 } else {
                     throw new Error('Network response was not ok');
@@ -1851,6 +1867,13 @@
                     if (typeof gtag !== 'undefined') {
                         trackLeadConversion();
                         trackEvent('form_submit', 'engagement', 'application_form');
+                    }
+                    
+                    if (typeof fbq !== 'undefined') {
+                        fbq('track', 'Lead', {
+                            content_name: 'Main Form Submission',
+                            content_category: 'Lead Generation'
+                        });
                     }
                 } else {
                     throw new Error('Network response was not ok');
