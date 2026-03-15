@@ -292,7 +292,7 @@
         .hero {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 140px 0 80px;
+            padding: 175px 0 80px;
             text-align: center;
             position: relative;
         }
@@ -992,6 +992,206 @@
             font-weight: bold;
         }
 
+        /* Announcement bar */
+        .announcement-bar {
+            background: linear-gradient(90deg, #ee5a24, #ff6b6b);
+            color: white;
+            text-align: center;
+            padding: 8px 40px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            letter-spacing: 0.3px;
+        }
+
+        /* Floating WhatsApp button */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.6);
+            text-decoration: none;
+            z-index: 999;
+            transition: transform 0.3s;
+            animation: wa-pulse 2.5s infinite;
+        }
+        .floating-whatsapp:hover { transform: scale(1.15); }
+
+        @keyframes wa-pulse {
+            0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.5); }
+            50%       { box-shadow: 0 4px 35px rgba(37,211,102,0.9); }
+        }
+
+        /* Sticky mobile bottom CTA */
+        .sticky-mobile-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(90deg, #ff6b6b, #ee5a24);
+            z-index: 997;
+            box-shadow: 0 -3px 15px rgba(0,0,0,0.25);
+        }
+        .sticky-mobile-cta a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            text-align: center;
+            padding: 14px 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Exit intent popup */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.75);
+            z-index: 3000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .popup-overlay.active { display: flex; }
+        .popup-box {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            max-width: 480px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            animation: popup-in 0.3s ease;
+        }
+        @keyframes popup-in {
+            from { transform: scale(0.85); opacity: 0; }
+            to   { transform: scale(1);    opacity: 1; }
+        }
+        .popup-close-btn {
+            position: absolute;
+            top: 12px; right: 16px;
+            font-size: 1.4rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: #aaa;
+            line-height: 1;
+        }
+        .popup-close-btn:hover { color: #333; }
+        .popup-box h3 {
+            font-size: 1.7rem;
+            color: #ff6b6b;
+            margin-bottom: 0.75rem;
+        }
+        .popup-box p { color: #555; margin-bottom: 1.5rem; font-size: 1.05rem; line-height: 1.5; }
+        .popup-form { display: flex; flex-direction: column; gap: 0.9rem; }
+        .popup-form input {
+            padding: 13px 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+        .popup-form input:focus { outline: none; border-color: #ff6b6b; }
+        .popup-submit-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .popup-submit-btn:hover { opacity: 0.92; }
+        .popup-skip-link {
+            color: #bbb;
+            font-size: 0.82rem;
+            cursor: pointer;
+            text-decoration: underline;
+            margin-top: 0.75rem;
+            display: block;
+        }
+        .popup-skip-link:hover { color: #888; }
+
+        /* Social proof counter */
+        .social-counter-bar {
+            background: rgba(40, 167, 69, 0.12);
+            border: 1.5px solid #28a745;
+            border-radius: 10px;
+            padding: 10px 20px;
+            text-align: center;
+            margin: 1rem 0 0.5rem;
+            color: #1e7e34;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+
+        /* Spots left badge */
+        .spots-left-badge {
+            background: rgba(255, 107, 107, 0.12);
+            border: 1.5px solid #ff6b6b;
+            border-radius: 8px;
+            padding: 7px 15px;
+            color: #ee5a24;
+            font-weight: bold;
+            font-size: 0.88rem;
+            text-align: center;
+            margin-top: 8px;
+            animation: blink-border 2s infinite;
+        }
+        @keyframes blink-border {
+            0%, 100% { border-color: #ff6b6b; }
+            50%       { border-color: #ee5a24; box-shadow: 0 0 8px rgba(255,107,107,0.4); }
+        }
+
+        /* Countdown timer */
+        .countdown-wrap {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 1.2rem 0;
+            flex-wrap: wrap;
+        }
+        .countdown-unit {
+            background: rgba(255,255,255,0.18);
+            border-radius: 12px;
+            padding: 12px 22px;
+            min-width: 72px;
+            text-align: center;
+            backdrop-filter: blur(5px);
+        }
+        .countdown-number {
+            display: block;
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #ffd700;
+            line-height: 1;
+        }
+        .countdown-label { font-size: 0.72rem; color: #e0e7ff; margin-top: 4px; display: block; }
+
+        @media (max-width: 768px) {
+            .sticky-mobile-cta { display: block; }
+            .floating-whatsapp { bottom: 68px; }
+            .announcement-bar { font-size: 0.78rem; padding: 7px 30px; }
+            .countdown-unit { padding: 10px 14px; min-width: 60px; }
+            .countdown-number { font-size: 1.8rem; }
+        }
+
         footer {
             background: #333;
             color: white;
@@ -1015,7 +1215,7 @@
 
         @media (max-width: 768px) {
             .hero {
-                padding: 160px 0 60px;
+                padding: 195px 0 60px;
             }
 
             .nav-menu {
@@ -1217,6 +1417,9 @@
 </head>
 <body>
     <header>
+        <div class="announcement-bar">
+            🎁 Только сейчас: пробный урок за 5 000 ₸ + бесплатная консультация!&nbsp;&nbsp;|&nbsp;&nbsp;Осталось <span id="spots-count">7</span> мест в ближайшей группе
+        </div>
         <nav class="container">
             <div class="logo-container">
                 <div class="elc-logo">ELC</div>
@@ -1275,6 +1478,12 @@
                 </form>
                 <div class="hero-guarantee">
                     🛡️ Гарантия возврата денег в течение 14 дней
+                </div>
+                <div class="social-counter-bar">
+                    👨‍👩‍👧 <span id="enrolled-today">24</span> родителей записались на пробный урок на этой неделе
+                </div>
+                <div class="spots-left-badge">
+                    ⚡ Осталось <span id="spots-form">7</span> мест в ближайшей группе — не упустите!
                 </div>
             </div>
             
@@ -1594,9 +1803,21 @@
         <div class="container">
             <h2>Запишите ребенка на лучшие курсы английского языка уже сегодня!</h2>
             <div class="urgency">
-                ⏰ Количество мест в группах изучения английского ограничено!<br>
-                Записывайтесь на курсы английского для детей сейчас, чтобы гарантировать место для вашего ребенка.<br>
-                Подарите английский язык, который изменит будущее!
+                ⏰ Количество мест в группах ограничено! Запись закроется через:
+            </div>
+            <div class="countdown-wrap" id="countdown">
+                <div class="countdown-unit">
+                    <span class="countdown-number" id="cd-h">23</span>
+                    <span class="countdown-label">часов</span>
+                </div>
+                <div class="countdown-unit">
+                    <span class="countdown-number" id="cd-m">59</span>
+                    <span class="countdown-label">минут</span>
+                </div>
+                <div class="countdown-unit">
+                    <span class="countdown-number" id="cd-s">59</span>
+                    <span class="countdown-label">секунд</span>
+                </div>
             </div>
             <a href="/запись" class="cta-button">Записаться на курсы английского через Roblox</a>
         </div>
@@ -1645,6 +1866,32 @@
             </div>
         </div>
     </footer>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/77074569118?text=Здравствуйте!%20Хочу%20записать%20ребенка%20на%20пробный%20урок%20английского%20через%20Roblox" class="floating-whatsapp" target="_blank" title="Написать в WhatsApp" rel="noopener">
+        📱
+    </a>
+
+    <!-- Sticky mobile bottom CTA -->
+    <div class="sticky-mobile-cta">
+        <a href="/запись">🎯 Записать ребенка — пробный урок 5 000 ₸</a>
+    </div>
+
+    <!-- Exit intent popup -->
+    <div class="popup-overlay" id="exit-popup" role="dialog" aria-modal="true" aria-label="Специальное предложение">
+        <div class="popup-box">
+            <button class="popup-close-btn" id="popup-close" aria-label="Закрыть">✕</button>
+            <div style="font-size: 3rem; margin-bottom: 0.75rem;">🎁</div>
+            <h3>Подождите!</h3>
+            <p>Оставьте номер прямо сейчас и получите <strong>бесплатную консультацию</strong> + первый пробный урок со <strong>скидкой 50%</strong>!</p>
+            <form class="popup-form" id="popup-form">
+                <input type="text" name="parent-name" placeholder="Ваше имя" required>
+                <input type="tel" name="phone" placeholder="+7 (777) 123-45-67" required>
+                <button type="submit" class="popup-submit-btn">Получить скидку 50%!</button>
+            </form>
+            <span class="popup-skip-link" id="popup-skip">Нет, спасибо, хочу заплатить полную цену</span>
+        </div>
+    </div>
 
     <script>
         // Маршрутизация
@@ -1812,6 +2059,102 @@
                 this.reset();
             }
         });
+
+        // ── Countdown timer ──────────────────────────────────────────
+        (function () {
+            var endTime = new Date();
+            endTime.setHours(23, 59, 59, 0);
+            if (new Date() >= endTime) endTime.setDate(endTime.getDate() + 1);
+
+            function update() {
+                var diff = endTime - new Date();
+                if (diff < 0) { endTime.setDate(endTime.getDate() + 1); diff = endTime - new Date(); }
+                var h = Math.floor(diff / 3600000);
+                var m = Math.floor((diff % 3600000) / 60000);
+                var s = Math.floor((diff % 60000) / 1000);
+                document.getElementById('cd-h').textContent = String(h).padStart(2, '0');
+                document.getElementById('cd-m').textContent = String(m).padStart(2, '0');
+                document.getElementById('cd-s').textContent = String(s).padStart(2, '0');
+            }
+            update();
+            setInterval(update, 1000);
+        })();
+
+        // ── Social proof counter (slowly grows) ─────────────────────
+        (function () {
+            var base = 24;
+            var el = document.getElementById('enrolled-today');
+            if (!el) return;
+            setInterval(function () {
+                if (Math.random() < 0.12) {
+                    base++;
+                    el.textContent = base;
+                }
+            }, 30000);
+        })();
+
+        // ── Exit-intent popup ────────────────────────────────────────
+        (function () {
+            var shown = sessionStorage.getItem('popupShown');
+            var overlay = document.getElementById('exit-popup');
+
+            function show() {
+                if (shown) return;
+                shown = true;
+                sessionStorage.setItem('popupShown', '1');
+                overlay.classList.add('active');
+            }
+
+            // Desktop: mouse leaves to top
+            document.addEventListener('mouseleave', function (e) {
+                if (e.clientY <= 0) show();
+            });
+
+            // Mobile fallback: after 50 seconds
+            setTimeout(show, 50000);
+
+            // Close buttons
+            document.getElementById('popup-close').addEventListener('click', function () {
+                overlay.classList.remove('active');
+            });
+            document.getElementById('popup-skip').addEventListener('click', function () {
+                overlay.classList.remove('active');
+            });
+            overlay.addEventListener('click', function (e) {
+                if (e.target === overlay) overlay.classList.remove('active');
+            });
+
+            // Popup form submit
+            document.getElementById('popup-form').addEventListener('submit', async function (e) {
+                e.preventDefault();
+                var formData = new FormData(this);
+                var data = {};
+                for (var pair of formData.entries()) data[pair[0]] = pair[1];
+
+                var message = '\uD83C\uDFAE ЗАЯВКА (popup скидка 50%) ELC Kids Almaty!\n\n' +
+                    '\uD83D\uDC68\u200D\uD83D\uDC69\u200D\uD83D\uDC67\u200D\uD83D\uDC66 Родитель: ' + (data['parent-name'] || '') + '\n' +
+                    '\uD83D\uDCDE Телефон: ' + (data.phone || '') + '\n' +
+                    '\uD83D\uDCCD Источник: Exit popup (скидка 50%)\n' +
+                    '\u23F0 Время: ' + new Date().toLocaleString('ru-RU');
+
+                try {
+                    await fetch('https://api.telegram.org/bot7660930209:AAHx2T9toG1LID97XAlB8Ha1FOgeVfa53lM/sendMessage', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ chat_id: '-4584976529', text: message })
+                    });
+                } catch (err) { /* silent */ }
+
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'conversion', { 'send_to': 'AW-XXXXXXXXXX/YYYYYYYYYYY', 'event_category': 'form', 'event_label': 'popup_form' });
+                    gtag('event', 'generate_lead', { 'event_category': 'form', 'event_label': 'exit_popup' });
+                }
+
+                overlay.classList.remove('active');
+                alert('\uD83C\uDF89 Отлично! Мы свяжемся с вами для активации скидки 50% на первый урок!');
+                this.reset();
+            });
+        })();
 
         // FAQ аккордеон
         document.querySelectorAll('.faq-question').forEach(question => {
