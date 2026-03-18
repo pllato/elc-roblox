@@ -865,5 +865,75 @@ async function sub(p){
   if(typeof fbq !== "undefined") fbq('track', 'Lead');
 }
 </script>
+
+<!-- WhatsApp Float Widget -->
+<style>
+.wa-float {
+  position: fixed; bottom: 28px; right: 28px; z-index: 999;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 10px;
+}
+.wa-bubble {
+  background: #25D366; color: white;
+  width: 60px; height: 60px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem; cursor: pointer;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+  animation: wa-pulse 2.5s ease infinite;
+}
+.wa-bubble:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.65); }
+@keyframes wa-pulse {
+  0%,100% { box-shadow: 0 4px 20px rgba(37,211,102,0.5); }
+  50% { box-shadow: 0 4px 32px rgba(37,211,102,0.8), 0 0 0 8px rgba(37,211,102,0.12); }
+}
+.wa-tooltip {
+  background: var(--dk2); color: white;
+  font-family: "Nunito", sans-serif; font-size: .84rem; font-weight: 700;
+  padding: 10px 16px; border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  border: 1px solid rgba(255,255,255,0.1);
+  white-space: nowrap;
+  animation: wa-tooltip-in 0.3s ease both;
+  position: relative;
+}
+.wa-tooltip::after {
+  content: "";
+  position: absolute; right: 18px; bottom: -6px;
+  width: 12px; height: 12px;
+  background: var(--dk2);
+  border-right: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  transform: rotate(45deg);
+}
+@keyframes wa-tooltip-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.wa-tooltip.hidden { display: none; }
+@media(max-width:480px) {
+  .wa-float { bottom: 20px; right: 16px; }
+  .wa-bubble { width: 54px; height: 54px; font-size: 1.6rem; }
+}
+</style>
+
+<div class="wa-float">
+  <div class="wa-tooltip" id="wa-tip">💬 Напишите нам — ответим быстро!</div>
+  <a class="wa-bubble" href="https://wa.me/77074569118?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21+%D0%A5%D0%BE%D1%87%D1%83+%D1%83%D0%B7%D0%BD%D0%B0%D1%82%D1%8C+%D0%BF%D0%BE%D0%B4%D1%80%D0%BE%D0%B1%D0%BD%D0%B5%D0%B5+%D0%BE+RobEng+%F0%9F%8E%AE" target="_blank" onclick="document.getElementById('wa-tip').classList.add('hidden')">💬</a>
+</div>
+
+<script>
+// Скрыть тултип через 5 секунд
+setTimeout(()=>{ const t=document.getElementById('wa-tip'); if(t) t.classList.add('hidden'); }, 5000);
+// Показать снова при скролле до конца
+window.addEventListener('scroll',()=>{
+  const t=document.getElementById('wa-tip');
+  if(!t) return;
+  const scrolled=(window.scrollY+window.innerHeight)/document.body.scrollHeight;
+  if(scrolled>0.85) t.classList.remove('hidden');
+  else t.classList.add('hidden');
+});
+</script>
+<!-- End WhatsApp Widget -->
 </body>
 </html>
