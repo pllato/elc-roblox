@@ -767,20 +767,36 @@ async function sub(p){
   const WEBHOOK = "https://elcalmaty.bitrix24.kz/rest/1/mmsld17ls6gcshde/";
 
   try {
+    const utm = new URLSearchParams(window.location.search);
     const params = new URLSearchParams({
-      "FIELDS[TITLE]": "Заявка с сайта RobEng",
+      "FIELDS[TITLE]": "Заявка RobEng — " + n,
+      "FIELDS[CONTACT_NAME]": n,
+      "FIELDS[CATEGORY_ID]": "8",
+      "FIELDS[STAGE_ID]": "C8:NEW",
+      "FIELDS[OPPORTUNITY]": "5000",
+      "FIELDS[CURRENCY_ID]": "KZT",
+      "FIELDS[COMMENTS]": "Возраст ребёнка: " + a + "\nТелефон: " + ph + "\nИсточник: Лендинг RobEng",
+      "FIELDS[SOURCE_ID]": "WEB",
+      "FIELDS[SOURCE_DESCRIPTION]": "Лендинг RobEng — Roblox English",
+      "FIELDS[UTM_SOURCE]": utm.get("utm_source") || "",
+      "FIELDS[UTM_MEDIUM]": utm.get("utm_medium") || "",
+      "FIELDS[UTM_CAMPAIGN]": utm.get("utm_campaign") || "",
+      "FIELDS[UTM_CONTENT]": utm.get("utm_content") || "",
+    });
+
+    await fetch(WEBHOOK + "crm.deal.add.json?" + params.toString(), {
+      method: "GET",
+      mode: "no-cors"
+    });
+
+    // Добавляем телефон к сделке через контакт
+    const contactParams = new URLSearchParams({
       "FIELDS[NAME]": n,
       "FIELDS[PHONE][0][VALUE]": ph,
       "FIELDS[PHONE][0][VALUE_TYPE]": "WORK",
-      "FIELDS[COMMENTS]": "Возраст ребёнка: " + a,
       "FIELDS[SOURCE_ID]": "WEB",
-      "FIELDS[SOURCE_DESCRIPTION]": "Лендинг RobEng — Roblox English",
-      "FIELDS[UTM_SOURCE]": new URLSearchParams(window.location.search).get("utm_source") || "",
-      "FIELDS[UTM_MEDIUM]": new URLSearchParams(window.location.search).get("utm_medium") || "",
-      "FIELDS[UTM_CAMPAIGN]": new URLSearchParams(window.location.search).get("utm_campaign") || "",
     });
-
-    await fetch(WEBHOOK + "crm.lead.add.json?" + params.toString(), {
+    await fetch(WEBHOOK + "crm.contact.add.json?" + contactParams.toString(), {
       method: "GET",
       mode: "no-cors"
     });
