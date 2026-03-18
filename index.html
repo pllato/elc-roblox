@@ -740,16 +740,38 @@ document.querySelectorAll(".rev").forEach(el=>obs.observe(el));
 
 function maskPhone(id){
   const el=document.getElementById(id);if(!el)return;
+  el.addEventListener("focus",function(){
+    if(!this.value) this.value="+7-";
+  });
   el.addEventListener("input",function(){
     let v=this.value.replace(/\D/g,"");
     if(v.startsWith("8"))v="7"+v.slice(1);
-    if(v.startsWith("7")){
-      const m=v.match(/^(\d)(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})$/);
-      this.value=!m[2]?"+"+m[1]:"+"+m[1]+" ("+m[2]+(m[3]?") "+m[3]:"")+(m[4]?"-"+m[4]:"")+(m[5]?"-"+m[5]:"");
-    }
+    if(!v.startsWith("7"))v="7"+v;
+    v=v.substring(0,11);
+    let r="+7";
+    if(v.length>1) r+="-"+v.substring(1,4);
+    if(v.length>4) r+="-"+v.substring(4,7);
+    if(v.length>7) r+="-"+v.substring(7,9);
+    if(v.length>9) r+="-"+v.substring(9,11);
+    this.value=r;
+  });
+  el.addEventListener("keydown",function(e){
+    if(e.key==="Backspace"&&this.value==="+7-") e.preventDefault();
+  });
+  el.addEventListener("blur",function(){
+    if(this.value==="+7-") this.value="";
   });
 }
 maskPhone("h-phone");maskPhone("b-phone");
+
+function openWhatsApp(name, phone){
+  const text = encodeURIComponent(
+    "Здравствуйте! Меня зовут " + name + ".\n" +
+    "Хочу узнать подробнее и записать ребёнка на пробный урок RobEng 🎮"
+  );
+  const waNumber = "77074569118";
+  window.open("https://wa.me/" + waNumber + "?text=" + text, "_blank");
+}
 
 async function sub(p){
   const n=document.getElementById(p+"-name").value.trim();
@@ -768,38 +790,54 @@ async function sub(p){
 
   try {
     const utm = new URLSearchParams(window.location.search);
-    const params = new URLSearchParams({
-      "FIELDS[TITLE]": "Заявка RobEng — " + n,
-      "FIELDS[CONTACT_NAME]": n,
-      "FIELDS[CATEGORY_ID]": "8",
-      "FIELDS[STAGE_ID]": "C8:NEW",
-      "FIELDS[OPPORTUNITY]": "5000",
-      "FIELDS[CURRENCY_ID]": "KZT",
-      "FIELDS[COMMENTS]": "Возраст ребёнка: " + a + "\nТелефон: " + ph + "\nИсточник: Лендинг RobEng",
-      "FIELDS[SOURCE_ID]": "WEB",
-      "FIELDS[SOURCE_DESCRIPTION]": "Лендинг RobEng — Roblox English",
-      "FIELDS[UTM_SOURCE]": utm.get("utm_source") || "",
-      "FIELDS[UTM_MEDIUM]": utm.get("utm_medium") || "",
-      "FIELDS[UTM_CAMPAIGN]": utm.get("utm_campaign") || "",
-      "FIELDS[UTM_CONTENT]": utm.get("utm_content") || "",
-    });
 
-    await fetch(WEBHOOK + "crm.deal.add.json?" + params.toString(), {
-      method: "GET",
-      mode: "no-cors"
-    });
+    // Шаг 1 — создаём контакт с именем и телефоном
+    const nameParts = n.trim().split(" ");
+    const contactBody = {
+      fields: {
+        NAME: nameParts[0] || n,
+        LAST_NAME: nameParts[1] || "",
+        PHONE: [{ VALUE: ph, VALUE_TYPE: "WORK" }],
+        SOURCE_ID: "WEB",
+        SOURCE_DESCRIPTION: "Лендинг RobEng"
+      }
+    };
+    let contactId = null;
+    try {
+      const cResp = await fetch(WEBHOOK + "crm.contact.add.json", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(contactBody)
+      });
+      const cData = await cResp.json();
+      contactId = cData.result || null;
+    } catch(e) { console.warn("Contact error:", e); }
 
-    // Добавляем телефон к сделке через контакт
-    const contactParams = new URLSearchParams({
-      "FIELDS[NAME]": n,
-      "FIELDS[PHONE][0][VALUE]": ph,
-      "FIELDS[PHONE][0][VALUE_TYPE]": "WORK",
-      "FIELDS[SOURCE_ID]": "WEB",
-    });
-    await fetch(WEBHOOK + "crm.contact.add.json?" + contactParams.toString(), {
-      method: "GET",
-      mode: "no-cors"
-    });
+    // Шаг 2 — создаём сделку и привязываем контакт
+    const dealBody = {
+      fields: {
+        TITLE: "Заявка RobEng — " + n,
+        CATEGORY_ID: "8",
+        STAGE_ID: "C8:NEW",
+        OPPORTUNITY: 5000,
+        CURRENCY_ID: "KZT",
+        COMMENTS: "Возраст ребёнка: " + a,
+        SOURCE_ID: "WEB",
+        SOURCE_DESCRIPTION: "Лендинг RobEng — Roblox English",
+        UTM_SOURCE: utm.get("utm_source") || "",
+        UTM_MEDIUM: utm.get("utm_medium") || "",
+        UTM_CAMPAIGN: utm.get("utm_campaign") || "",
+        UTM_CONTENT: utm.get("utm_content") || "",
+        ...(contactId ? { CONTACT_ID: contactId } : {})
+      }
+    };
+    try {
+      await fetch(WEBHOOK + "crm.deal.add.json", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dealBody)
+      });
+    } catch(e) { console.warn("Deal error:", e); }
   } catch(e) {
     console.warn("Bitrix error:", e);
   }
@@ -807,6 +845,7 @@ async function sub(p){
   btn.textContent = orig;
   btn.disabled = false;
   document.getElementById("modal").classList.add("open");
+  setTimeout(()=>openWhatsApp(n, ph), 800);
 }
 </script>
 </body>
