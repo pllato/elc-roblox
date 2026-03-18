@@ -729,8 +729,9 @@ footer img{height:34px}
   <div class="mb">
     <span class="me">🎉</span>
     <h3>Заявка принята!</h3>
-    <p>Перезвоним в течение <strong style="color:#fff">60 минут</strong>.<br><br>Совсем скоро ваш ребёнок скажет:<br><strong style="color:var(--or)">«Мама, когда следующий урок в Roblox?»</strong> 🚀</p>
-    <button class="mc2" onclick="document.getElementById('modal').classList.remove('open')">Отлично, жду звонка!</button>
+    <p>Перезвоним в течение <strong style="color:#fff">60 минут</strong>.<br><br>Или напишите нам прямо сейчас — ответим быстрее!</p>
+    <button class="mc2" style="width:100%;margin-top:20px;background:var(--gr);box-shadow:0 4px 0 var(--gr-d)" onclick="openWhatsApp(window._waName||'',window._waPhone||'')">💬 Написать в WhatsApp</button>
+    <button class="mc2" style="width:100%;margin-top:10px;background:transparent;border:1.5px solid rgba(255,255,255,0.15);box-shadow:none;color:rgba(255,255,255,0.5);font-size:.85rem" onclick="document.getElementById('modal').classList.remove('open')">Жду звонка</button>
   </div>
 </div>
 
@@ -845,7 +846,8 @@ async function sub(p){
   btn.textContent = orig;
   btn.disabled = false;
   document.getElementById("modal").classList.add("open");
-  setTimeout(()=>openWhatsApp(n, ph), 800);
+  // сохраняем данные для кнопки WA в модалке
+  window._waName = n; window._waPhone = ph;
 }
 </script>
 </body>
