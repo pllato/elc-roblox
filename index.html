@@ -751,13 +751,45 @@ function maskPhone(id){
 }
 maskPhone("h-phone");maskPhone("b-phone");
 
-function sub(p){
+async function sub(p){
   const n=document.getElementById(p+"-name").value.trim();
   const ph=document.getElementById(p+"-phone").value.trim();
   const a=document.getElementById(p+"-age").value;
   if(!n){alert("Пожалуйста, введите ваше имя");return}
   if(!ph||ph.length<10){alert("Пожалуйста, введите номер телефона");return}
   if(!a){alert("Пожалуйста, выберите возраст ребёнка");return}
+
+  const btn = document.querySelector(p==="h"?".sbtn":".btn-full");
+  const orig = btn.textContent;
+  btn.textContent = "⏳ Отправляем...";
+  btn.disabled = true;
+
+  const WEBHOOK = "https://elcalmaty.bitrix24.kz/rest/1/mmsld17ls6gcshde/";
+
+  try {
+    const params = new URLSearchParams({
+      "FIELDS[TITLE]": "Заявка с сайта RobEng",
+      "FIELDS[NAME]": n,
+      "FIELDS[PHONE][0][VALUE]": ph,
+      "FIELDS[PHONE][0][VALUE_TYPE]": "WORK",
+      "FIELDS[COMMENTS]": "Возраст ребёнка: " + a,
+      "FIELDS[SOURCE_ID]": "WEB",
+      "FIELDS[SOURCE_DESCRIPTION]": "Лендинг RobEng — Roblox English",
+      "FIELDS[UTM_SOURCE]": new URLSearchParams(window.location.search).get("utm_source") || "",
+      "FIELDS[UTM_MEDIUM]": new URLSearchParams(window.location.search).get("utm_medium") || "",
+      "FIELDS[UTM_CAMPAIGN]": new URLSearchParams(window.location.search).get("utm_campaign") || "",
+    });
+
+    await fetch(WEBHOOK + "crm.lead.add.json?" + params.toString(), {
+      method: "GET",
+      mode: "no-cors"
+    });
+  } catch(e) {
+    console.warn("Bitrix error:", e);
+  }
+
+  btn.textContent = orig;
+  btn.disabled = false;
   document.getElementById("modal").classList.add("open");
 }
 </script>
