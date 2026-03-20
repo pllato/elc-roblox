@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Брендбук & Пресс-кит — RobEng</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --or: #F7941D;
+      --or-d: #C9720D;
+      --gr: #6DC21B;
+      --dk: #0C0E11;
+      --dk2: #141720;
+      --dk3: #1C2030;
+      --bd: rgba(255,255,255,.07);
+      --bd2: rgba(255,255,255,.13);
+      --mu: rgba(255,255,255,.42);
+      --mu2: rgba(255,255,255,.68);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--dk);
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      background: rgba(12,14,17,.97);
+      border-bottom: 1px solid var(--bd2);
+      padding: 14px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.3rem;
+      color: #fff;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--or); }
+    .nav-back {
+      color: var(--mu2);
+      font-size: .85rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color .2s;
+    }
+    .nav-back:hover { color: #fff; }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, var(--dk2) 0%, var(--dk3) 100%);
+      border-bottom: 1px solid var(--bd2);
+      padding: 64px 5% 56px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 50% 80% at 80% 50%, rgba(247,148,29,.07) 0%, transparent 60%),
+        radial-gradient(ellipse 30% 50% at 10% 80%, rgba(109,194,27,.05) 0%, transparent 60%);
+    }
+    .hero-in {
+      position: relative; z-index: 1;
+      max-width: 860px; margin: 0 auto;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(247,148,29,.12);
+      border: 1px solid rgba(247,148,29,.3);
+      color: var(--or);
+      font-size: .72rem; font-weight: 800;
+      text-transform: uppercase; letter-spacing: .1em;
+      padding: 5px 14px; border-radius: 50px;
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -.5px;
+      margin-bottom: 14px;
+    }
+    .hero h1 span { color: var(--or); }
+    .hero p {
+      color: var(--mu2);
+      font-size: .97rem;
+      max-width: 560px;
+      line-height: 1.75;
+    }
+
+    /* LAYOUT */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 56px 5% 80px;
+    }
+
+    /* SECTION TITLE */
+    .sec-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.1rem;
+      color: #fff;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .sec-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--bd2);
+    }
+
+    /* CARD */
+    .card {
+      background: var(--dk2);
+      border: 1px solid var(--bd2);
+      border-radius: 18px;
+      padding: 28px 30px;
+      margin-bottom: 40px;
+    }
+
+    /* LOGO PREVIEW */
+    .logo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .logo-preview {
+      border-radius: 14px;
+      padding: 36px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 140px;
+      position: relative;
+    }
+    .logo-preview.dark { background: #0C0E11; border: 1px solid var(--bd2); }
+    .logo-preview.light { background: #FAFAFA; border: 1px solid #E0E0E0; }
+    .logo-preview.orange { background: linear-gradient(135deg, #F7941D, #FFD600); }
+    .logo-preview.green { background: linear-gradient(135deg, #2d6a00, #4a9e0f); }
+    .logo-preview img {
+      max-width: 200px;
+      max-height: 80px;
+      object-fit: contain;
+    }
+    .logo-preview-label {
+      position: absolute;
+      bottom: 10px; left: 14px;
+      font-size: .65rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: rgba(255,255,255,.3);
+    }
+    .logo-preview.light .logo-preview-label { color: rgba(0,0,0,.3); }
+
+    /* DOWNLOAD BUTTONS */
+    .dl-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 4px;
+    }
+    .dl-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--bd2);
+      border-radius: 10px;
+      padding: 10px 16px;
+      text-decoration: none;
+      color: rgba(255,255,255,.75);
+      font-size: .83rem;
+      font-weight: 800;
+      transition: background .2s, border-color .2s, color .2s;
+    }
+    .dl-btn:hover {
+      background: rgba(247,148,29,.1);
+      border-color: rgba(247,148,29,.35);
+      color: #fff;
+    }
+    .dl-btn .ico { font-size: 1rem; }
+
+    /* COLOR PALETTE */
+    .palette {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .color-chip {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--bd2);
+      flex: 1;
+      min-width: 120px;
+    }
+    .color-swatch {
+      height: 64px;
+    }
+    .color-info {
+      background: rgba(255,255,255,.04);
+      padding: 10px 12px;
+    }
+    .color-name {
+      font-size: .8rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 3px;
+    }
+    .color-hex {
+      font-size: .74rem;
+      font-weight: 700;
+      color: var(--mu);
+      font-family: monospace;
+    }
+
+    /* TYPOGRAPHY */
+    .type-row {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .type-item {
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--bd);
+      border-radius: 12px;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .type-sample {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #fff;
+    }
+    .type-meta { text-align: right; }
+    .type-name { font-size: .8rem; font-weight: 800; color: var(--or); margin-bottom: 3px; }
+    .type-desc { font-size: .75rem; color: var(--mu); font-weight: 600; }
+
+    /* PRESS KIT */
+    .press-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .press-item {
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--bd2);
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .press-ico { font-size: 1.8rem; }
+    .press-name { font-size: .9rem; font-weight: 800; color: #fff; }
+    .press-desc { font-size: .78rem; color: var(--mu); font-weight: 600; line-height: 1.55; }
+    .press-btn {
+      margin-top: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(247,148,29,.1);
+      border: 1px solid rgba(247,148,29,.25);
+      border-radius: 9px;
+      padding: 8px 14px;
+      color: var(--or);
+      font-size: .78rem;
+      font-weight: 800;
+      text-decoration: none;
+      transition: background .2s;
+      width: fit-content;
+    }
+    .press-btn:hover { background: rgba(247,148,29,.2); }
+
+    /* CONTACTS */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .contact-item {
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--bd);
+      border-radius: 12px;
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .contact-ico {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .contact-label { font-size: .7rem; font-weight: 800; color: var(--mu); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 3px; }
+    .contact-val { font-size: .88rem; font-weight: 700; color: #fff; text-decoration: none; }
+    .contact-val:hover { color: var(--or); }
+
+    /* FOOTER */
+    footer {
+      background: var(--dk2);
+      border-top: 1px solid var(--bd2);
+      text-align: center;
+      padding: 24px;
+      font-size: .8rem;
+      color: var(--mu);
+    }
+    footer a { color: var(--or); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      .logo-grid { grid-template-columns: 1fr; }
+      .press-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Rob<span>Eng</span></a>
+  <a href="index.html" class="nav-back">← На главную</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-in">
+    <div class="hero-badge">Официальные материалы</div>
+    <h1>Брендбук & <span>Пресс-кит</span></h1>
+    <p>Официальные материалы бренда RobEng для СМИ, блогеров, партнёров и рекламных агентств. Все файлы доступны для свободного скачивания.</p>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- LOGO -->
+  <div class="sec-title">🎨 Логотип</div>
+  <div class="card">
+    <div class="logo-grid">
+      <div class="logo-preview dark">
+        <img src="robeng_logo.png" alt="RobEng лого на тёмном фоне">
+        <span class="logo-preview-label">Тёмный фон</span>
+      </div>
+      <div class="logo-preview light">
+        <img src="robeng_logo.png" alt="RobEng лого на светлом фоне">
+        <span class="logo-preview-label">Светлый фон</span>
+      </div>
+      <div class="logo-preview orange">
+        <img src="robeng_logo.png" alt="RobEng лого на оранжевом фоне">
+        <span class="logo-preview-label">Оранжевый фон</span>
+      </div>
+      <div class="logo-preview green">
+        <img src="robeng_logo.png" alt="RobEng лого на зелёном фоне">
+        <span class="logo-preview-label">Зелёный фон</span>
+      </div>
+    </div>
+    <p style="font-size:.8rem;color:var(--mu);margin-bottom:14px;font-weight:600;">
+      ⚠️ Не искажайте пропорции, не меняйте цвета и не добавляйте обводку к логотипу.
+    </p>
+    <div class="dl-row">
+      <a href="robeng_logo.png" download="robeng-logo.png" class="dl-btn">
+        <span class="ico">⬇</span> PNG · Логотип
+      </a>
+      <a href="mailto:uurraa@gmail.com?subject=Запрос SVG логотипа RobEng" class="dl-btn">
+        <span class="ico">✉️</span> Запросить SVG
+      </a>
+    </div>
+  </div>
+
+  <!-- COLORS -->
+  <div class="sec-title">🎨 Фирменные цвета</div>
+  <div class="card">
+    <div class="palette">
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#F7941D"></div>
+        <div class="color-info">
+          <div class="color-name">RobEng Orange</div>
+          <div class="color-hex">#F7941D</div>
+        </div>
+      </div>
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#6DC21B"></div>
+        <div class="color-info">
+          <div class="color-name">RobEng Green</div>
+          <div class="color-hex">#6DC21B</div>
+        </div>
+      </div>
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#FFD600"></div>
+        <div class="color-info">
+          <div class="color-name">Accent Yellow</div>
+          <div class="color-hex">#FFD600</div>
+        </div>
+      </div>
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#0C0E11"></div>
+        <div class="color-info">
+          <div class="color-name">Dark BG</div>
+          <div class="color-hex">#0C0E11</div>
+        </div>
+      </div>
+      <div class="color-chip">
+        <div class="color-swatch" style="background:#FFFFFF; border-bottom:1px solid #eee"></div>
+        <div class="color-info">
+          <div class="color-name">White</div>
+          <div class="color-hex">#FFFFFF</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TYPOGRAPHY -->
+  <div class="sec-title">🔤 Типографика</div>
+  <div class="card">
+    <div class="type-row">
+      <div class="type-item">
+        <div class="type-sample" style="font-family:'Montserrat',sans-serif;">RobEng</div>
+        <div class="type-meta">
+          <div class="type-name">Montserrat</div>
+          <div class="type-desc">Заголовки · Weight 900<br>Логотип, H1, H2</div>
+        </div>
+      </div>
+      <div class="type-item">
+        <div class="type-sample" style="font-family:'Nunito',sans-serif;font-size:1.5rem;font-weight:700;">Английский через Roblox</div>
+        <div class="type-meta">
+          <div class="type-name">Nunito</div>
+          <div class="type-desc">Основной текст · Weight 400–800<br>Подзаголовки, UI, кнопки</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRESS KIT -->
+  <div class="sec-title">📦 Пресс-кит</div>
+  <div class="card">
+    <div class="press-grid">
+      <div class="press-item">
+        <div class="press-ico">🏢</div>
+        <div class="press-name">О компании</div>
+        <div class="press-desc">RobEng — онлайн-школа английского для детей 6–12 лет с обучением внутри платформы Roblox. Основана в Алматы, работает по всему Казахстану.</div>
+        <a href="mailto:uurraa@gmail.com?subject=Пресс-кит RobEng" class="press-btn">📩 Получить полный кит</a>
+      </div>
+      <div class="press-item">
+        <div class="press-ico">📊</div>
+        <div class="press-name">Ключевые факты</div>
+        <div class="press-desc">87% детей начинают говорить через 3 недели · Занятия от 30 минут · Форматы: индивидуально и мини-группы · Онлайн по всему Казахстану</div>
+        <a href="mailto:uurraa@gmail.com?subject=Данные и статистика RobEng" class="press-btn">📩 Запросить данные</a>
+      </div>
+      <div class="press-item">
+        <div class="press-ico">🤝</div>
+        <div class="press-name">Партнёрства</div>
+        <div class="press-desc">Открыты к сотрудничеству с детскими центрами, школами, блогерами и медиа. Партнёрские условия обсуждаются индивидуально.</div>
+        <a href="mailto:uurraa@gmail.com?subject=Партнёрство с RobEng" class="press-btn">✉️ Написать нам</a>
+      </div>
+      <div class="press-item">
+        <div class="press-ico">📸</div>
+        <div class="press-name">Медиа-запрос</div>
+        <div class="press-desc">Журналистам и редакциям — предоставляем комментарии, фото, видео-материалы и данные для публикаций по запросу.</div>
+        <a href="mailto:uurraa@gmail.com?subject=Медиа-запрос RobEng" class="press-btn">📩 Медиа-запрос</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACTS -->
+  <div class="sec-title">📞 Контакты</div>
+  <div class="card">
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="contact-ico" style="background:rgba(247,148,29,.1);">📍</div>
+        <div>
+          <div class="contact-label">Адрес</div>
+          <div class="contact-val">г. Алматы, ул. Желтоксан 118, офис 407</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-ico" style="background:rgba(109,194,27,.1);">📞</div>
+        <div>
+          <div class="contact-label">Телефон</div>
+          <a href="tel:+77074569118" class="contact-val">+7 707 456-91-18</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-ico" style="background:rgba(247,148,29,.1);">✉️</div>
+        <div>
+          <div class="contact-label">Email</div>
+          <a href="mailto:uurraa@gmail.com" class="contact-val">uurraa@gmail.com</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-ico" style="background:rgba(37,211,102,.1);">💬</div>
+        <div>
+          <div class="contact-label">WhatsApp</div>
+          <a href="https://wa.me/77074569118" target="_blank" class="contact-val">+7 707 456-91-18</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-ico" style="background:rgba(131,58,180,.12);">📸</div>
+        <div>
+          <div class="contact-label">Instagram</div>
+          <a href="https://instagram.com/elc.roblox.english" target="_blank" class="contact-val">@elc.roblox.english</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-ico" style="background:rgba(247,148,29,.1);">🌐</div>
+        <div>
+          <div class="contact-label">Сайт</div>
+          <a href="https://elc-kids.kz" target="_blank" class="contact-val">elc-kids.kz</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2025 RobEng · ИП STUDYSTORIES.APP · <a href="https://elc-kids.kz">elc-kids.kz</a></p>
+  <p style="margin-top:6px;">По вопросам использования материалов: <a href="mailto:uurraa@gmail.com">uurraa@gmail.com</a></p>
+</footer>
+
+</body>
+</html>
