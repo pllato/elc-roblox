@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Публичная оферта — ELC Kids / RobEng</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand: #FF6B35;
+      --brand2: #FFB347;
+      --dark: #1A1A2E;
+      --text: #2D2D3A;
+      --muted: #6B7280;
+      --bg: #FAFAF8;
+      --card: #FFFFFF;
+      --border: #E8E8EE;
+      --accent: #4ECDC4;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    /* HEADER */
+    header {
+      background: var(--dark);
+      padding: 20px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(255,107,53,0.18) 0%, transparent 70%),
+                  radial-gradient(ellipse at 70% 50%, rgba(78,205,196,0.12) 0%, transparent 70%);
+    }
+    .header-inner {
+      position: relative;
+      z-index: 1;
+    }
+    .logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.6rem;
+      color: #fff;
+      letter-spacing: -0.5px;
+    }
+    .logo span { color: var(--brand); }
+    .header-sub {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.8rem;
+      margin-top: 2px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* HERO STRIP */
+    .hero-strip {
+      background: linear-gradient(135deg, var(--brand) 0%, var(--brand2) 100%);
+      padding: 40px 24px;
+      text-align: center;
+      color: #fff;
+    }
+    .hero-strip h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(1.5rem, 4vw, 2.4rem);
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+    }
+    .hero-strip p {
+      margin-top: 8px;
+      font-size: 0.95rem;
+      opacity: 0.85;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.22);
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 100px;
+      padding: 4px 14px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    /* LAYOUT */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* SECTION CARD */
+    .section-card {
+      background: var(--card);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      padding: 32px 36px;
+      margin-bottom: 20px;
+      position: relative;
+      transition: box-shadow 0.2s;
+    }
+    .section-card:hover {
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    }
+
+    .section-num {
+      position: absolute;
+      top: -14px;
+      left: 28px;
+      background: var(--brand);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 12px;
+      border-radius: 100px;
+    }
+
+    .section-card h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--dark);
+      margin-bottom: 16px;
+      letter-spacing: -0.2px;
+    }
+
+    .section-card p {
+      font-size: 0.93rem;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .section-card p:last-child { margin-bottom: 0; }
+
+    .section-card ul {
+      padding-left: 0;
+      list-style: none;
+      margin: 8px 0;
+    }
+    .section-card ul li {
+      font-size: 0.92rem;
+      padding: 4px 0 4px 20px;
+      position: relative;
+      color: var(--text);
+    }
+    .section-card ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--brand);
+      font-weight: 700;
+    }
+
+    strong { font-weight: 700; color: var(--dark); }
+
+    /* HIGHLIGHT BOX */
+    .highlight {
+      background: linear-gradient(135deg, rgba(255,107,53,0.08), rgba(255,179,71,0.08));
+      border-left: 3px solid var(--brand);
+      border-radius: 0 10px 10px 0;
+      padding: 12px 16px;
+      margin: 12px 0;
+      font-size: 0.9rem;
+    }
+
+    /* REQUISITES */
+    .req-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    @media (max-width: 500px) {
+      .req-grid { grid-template-columns: 1fr; }
+    }
+    .req-item {
+      background: var(--bg);
+      border-radius: 10px;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+    }
+    .req-label {
+      font-size: 0.72rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+    .req-value {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+      padding: 24px;
+      font-size: 0.8rem;
+    }
+    footer a {
+      color: var(--brand);
+      text-decoration: none;
+    }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      .section-card { padding: 24px 20px; }
+      .container { padding: 32px 16px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">Rob<span>Eng</span> · ELC Kids</div>
+    <div class="header-sub">elc-kids.kz</div>
+  </div>
+</header>
+
+<div class="hero-strip">
+  <div class="badge">Официальный документ</div>
+  <h1>Публичная оферта</h1>
+  <p>на оказание услуг дополнительного образования · г. Алматы</p>
+</div>
+
+<div class="container">
+
+  <!-- 1 -->
+  <div class="section-card">
+    <div class="section-num">Раздел 1</div>
+    <h2>Общие положения</h2>
+    <p>Настоящий документ является официальным предложением (публичной офертой) Индивидуального предпринимателя <strong>«STUDYSTORIES.APP»</strong> (далее — Исполнитель) заключить договор на оказание услуг дополнительного образования.</p>
+    <p>Оферта разработана в соответствии с Гражданским кодексом Республики Казахстан и является публичной.</p>
+    <div class="highlight">
+      <strong>Акцептом оферты считается:</strong> оплата услуг, регистрация на сайте или проставление отметки (чекбокса) о согласии с условиями. С момента акцепта договор считается заключённым.
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="section-card">
+    <div class="section-num">Раздел 2</div>
+    <h2>Предмет договора</h2>
+    <p>Исполнитель обязуется предоставить услуги дополнительного образования по обучению английскому языку для детей, а Заказчик обязуется оплатить данные услуги.</p>
+    <ul>
+      <li>Обучение проводится в онлайн-формате</li>
+      <li>С использованием платформы Roblox и иных цифровых инструментов</li>
+      <li>Индивидуально или в мини-группах</li>
+    </ul>
+    <p>Продолжительность одного занятия: <strong>от 30 минут</strong>.</p>
+  </div>
+
+  <!-- 3 -->
+  <div class="section-card">
+    <div class="section-num">Раздел 3</div>
+    <h2>Порядок оказания услуг</h2>
+    <p>Расписание занятий согласовывается с Заказчиком. В одном занятии может участвовать ограниченное количество учеников в соответствии с выбранным форматом.</p>
+    <p><strong>Исполнитель вправе:</strong></p>
+    <ul>
+      <li>Менять преподавателя</li>
+      <li>Корректировать расписание с предварительным уведомлением</li>
+    </ul>
+    <p><strong>Заказчик обязан:</strong></p>
+    <ul>
+      <li>Обеспечить стабильное интернет-соединение</li>
+      <li>Предоставить ребёнку устройство для занятий</li>
+      <li>Обеспечить своевременное подключение к занятиям</li>
+    </ul>
+  </div>
+
+  <!-- 4 -->
+  <div class="section-card">
+    <div class="section-num">Раздел 4</div>
+    <h2>Стоимость и оплата</h2>
+    <p>Стоимость услуг указывается на сайте <strong>elc-kids.kz</strong> либо доводится до сведения Заказчика менеджером.</p>
+    <ul>
+      <li>Оплата производится на условиях <strong>100% предоплаты</strong></li>
+      <li>Безналичным способом</li>
+    </ul>
+    <p>Услуги считаются оказанными по факту проведения занятия.</p>
+  </div>
+
+  <!-- 5 -->
+  <div class="section-card">
+    <div class="section-num">Раздел 5</div>
+    <h2>Отмена и перенос занятий</h2>
+    <p>Заказчик вправе перенести занятие при уведомлении не менее чем <strong>за 6 часов</strong> до начала.</p>
+    <div class="highlight">
+      В случае пропуска занятия без предупреждения — занятие считается проведённым, денежные средства не возвращаются.
+    </div>
+    <p>Исполнитель вправе перенести занятие, уведомив Заказчика заранее.</p>
+  </div>
+
+  <!-- 6 -->
+  <div class="section-card">
+    <div class="section-num">Раздел 6</div>
+    <h2>Возврат средств</h2>
+    <p>Возврат средств осуществляется за неиспользованные занятия. Сумма возврата рассчитывается пропорционально количеству оставшихся занятий.</p>
+    <p>Возврат осуществляется в течение <strong>до 10 (десяти) рабочих дней</strong>.</p>
+  </div>
+
+  <!-- 7 -->
+  <div class="section-card">
+    <div class="section-num">Раздел 7</div>
+    <h2>Права и обязанности сторон</h2>
+    <p><strong>Исполнитель обязуется:</strong></p>
+    <ul>
+      <li>Оказывать услуги надлежащего качества</li>
+      <li>Обеспечивать образовательный процесс</li>
+      <li>Предоставлять обратную связь по обучению</li>
+    </ul>
+    <p><strong>Заказчик обязуется:</strong></p>
+    <ul>
+      <li>Своевременно оплачивать услуги</li>
+      <li>Соблюдать правила обучения</li>
+      <li>Обеспечивать участие ребёнка в занятиях</li>
+    </ul>
+  </div>
+
+  <!-- 8 -->
+  <div class="section-card">
+    <div class="section-num">Раздел 8</div>
+    <h2>Ответственность</h2>
+    <p>Исполнитель не несёт ответственности за технические сбои со стороны Заказчика и проблемы с интернет-соединением.</p>
+    <p>Стороны несут ответственность в соответствии с законодательством Республики Казахстан.</p>
+  </div>
+
+  <!-- 9 -->
+  <div class="section-card">
+    <div class="section-num">Раздел 9</div>
+    <h2>Персональные данные</h2>
+    <p>Заказчик даёт согласие на обработку персональных данных. Обработка осуществляется исключительно в целях оказания услуг и связи с Заказчиком.</p>
+  </div>
+
+  <!-- 10 -->
+  <div class="section-card">
+    <div class="section-num">Раздел 10</div>
+    <h2>Срок действия и изменения</h2>
+    <p>Оферта действует <strong>бессрочно</strong>. Исполнитель вправе вносить изменения в оферту без предварительного уведомления. Актуальная версия всегда размещена на сайте.</p>
+  </div>
+
+  <!-- 11 -->
+  <div class="section-card">
+    <div class="section-num">Раздел 11</div>
+    <h2>Реквизиты исполнителя</h2>
+    <div class="req-grid">
+      <div class="req-item">
+        <div class="req-label">Наименование</div>
+        <div class="req-value">ИП STUDYSTORIES.APP</div>
+      </div>
+      <div class="req-item">
+        <div class="req-label">ИИН</div>
+        <div class="req-value">880607300110</div>
+      </div>
+      <div class="req-item">
+        <div class="req-label">Адрес</div>
+        <div class="req-value">г. Алматы, мкр. Орбита-4, д. 3, кв./офис 2</div>
+      </div>
+      <div class="req-item">
+        <div class="req-label">Телефон</div>
+        <div class="req-value">+7 707 456 9118</div>
+      </div>
+      <div class="req-item">
+        <div class="req-label">Банк</div>
+        <div class="req-value">АО «Kaspi Bank»</div>
+      </div>
+      <div class="req-item">
+        <div class="req-label">БИК / КБе</div>
+        <div class="req-value">CASPKZKA / 19</div>
+      </div>
+      <div class="req-item" style="grid-column: 1 / -1;">
+        <div class="req-label">Номер счёта</div>
+        <div class="req-value">KZ31722S000010366450</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12 -->
+  <div class="section-card">
+    <div class="section-num">Раздел 12</div>
+    <h2>Заключительные положения</h2>
+    <p>Все споры решаются путём переговоров. В случае недостижения соглашения — в судебном порядке в соответствии с законодательством Республики Казахстан.</p>
+  </div>
+
+</div>
+
+<footer>
+  <p>© ИП STUDYSTORIES.APP · <a href="https://elc-kids.kz">elc-kids.kz</a> · +7 707 456 9118</p>
+  <p style="margin-top:6px;">г. Алматы, мкр. Орбита-4, д. 3, кв./офис 2</p>
+</footer>
+
+</body>
+</html>
