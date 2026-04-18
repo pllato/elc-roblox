@@ -226,14 +226,16 @@ let allEnrollments = [], allStudents = [], allTeachers = [], allAtt = {};
 
 async function loadData(){
   try {
-    const [enrSnap, stuSnap, tSnap] = await Promise.all([
-      db.ref('eduSchedule/enrollments').once('value'),
-      db.ref('eduSchedule/students').once('value'),
-      db.ref('eduSchedule/teachers').once('value'),
-    ]);
-    allEnrollments = enrSnap.val() ? Object.values(enrSnap.val()) : [];
-    allStudents    = stuSnap.val() ? Object.values(stuSnap.val()) : [];
-    allTeachers    = tSnap.val()  ? Object.values(tSnap.val())  : [];
+    // Читаем из публичного узла progressPublic
+    const snap = await db.ref('progressPublic').once('value');
+    const data = snap.val();
+    if(!data){
+      document.getElementById('loading').innerHTML = '<div style="color:#f05975">Данные ещё не опубликованы администратором</div>';
+      return;
+    }
+    allEnrollments = data.enrollments ? Object.values(data.enrollments) : [];
+    allStudents    = data.students    ? Object.values(data.students)    : [];
+    allTeachers    = data.teachers    ? Object.values(data.teachers)    : [];
 
     const today = new Date().toISOString().slice(0,10);
     allEnrollments = allEnrollments.filter(e=>!e.inactive && e.dateEnd>=today);
