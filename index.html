@@ -412,6 +412,27 @@ footer img{height:34px}
   .guar-box{padding:28px 20px}
   nav .nav-tel{display:none}
 }
+
+/* ═══════ PROGRESS SECTION ═══════ */
+.prog-sec{padding:80px 20px;background:linear-gradient(180deg,#141720 0%,#1a1f30 100%)}
+.prog-in{max-width:900px;margin:0 auto}
+.prog-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin:36px 0 28px}
+.prog-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px 16px;transition:transform .2s,border-color .2s}
+.prog-card:hover{transform:translateY(-3px);border-color:rgba(109,194,27,.3)}
+.prog-card-active{border-color:rgba(109,194,27,.4)!important;background:rgba(109,194,27,.06)!important}
+.prog-card-icon{font-size:28px;margin-bottom:8px}
+.prog-card-level{display:inline-block;font-size:11px;font-weight:800;color:#6DC21B;background:rgba(109,194,27,.15);border:1px solid rgba(109,194,27,.25);padding:2px 10px;border-radius:20px;margin-bottom:6px}
+.prog-card-title{font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;color:#fff;margin-bottom:5px}
+.prog-card-desc{font-size:12px;color:rgba(255,255,255,.45);line-height:1.5}
+.prog-stats{display:flex;justify-content:center;gap:0;flex-wrap:wrap;border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden}
+.prog-stat{flex:1;min-width:80px;padding:16px 12px;text-align:center;border-right:1px solid rgba(255,255,255,.08)}
+.prog-stat:last-child{border-right:none}
+.prog-stat-val{display:block;font-family:'Nunito',sans-serif;font-size:22px;font-weight:900;color:#F7941D}
+.prog-stat-lbl{display:block;font-size:11px;color:rgba(255,255,255,.4);margin-top:2px}
+.btn-prog-link{display:inline-block;background:linear-gradient(135deg,#6DC21B,#4E8E12);color:#fff;font-family:'Nunito',sans-serif;font-size:15px;font-weight:800;padding:14px 28px;border-radius:12px;text-decoration:none;transition:transform .15s,box-shadow .15s;box-shadow:0 4px 20px rgba(109,194,27,.3)}
+.btn-prog-link:hover{transform:translateY(-2px);box-shadow:0 6px 28px rgba(109,194,27,.4)}
+@media(max-width:600px){.prog-cards{grid-template-columns:1fr 1fr}.prog-stat-val{font-size:18px}}
+
 </style>
 </head>
 <body>
@@ -693,6 +714,66 @@ footer img{height:34px}
         <p class="rtxt">«Сначала не верил. Взял пробный за 5 000 — думал, верну деньги. Но ребёнок после урока сам спросил: "Пап, когда следующий?" Теперь на Premium уже третий месяц.»</p>
         <div class="rauth"><div class="rav" style="background:rgba(77,196,255,.2)">Р</div><div><div class="rname">Рустам Н.</div><div class="rmeta">Сын, 10 лет · 3 месяца в RobEng</div></div></div>
       </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════ PROGRESS SECTION ═══════ -->
+<section class="prog-sec" id="progress">
+  <div class="prog-in">
+    <div class="sh c rev">
+      <span class="slbl">Прозрачное обучение</span>
+      <h2>Следите за прогрессом<br><span class="g">в реальном времени</span></h2>
+      <p class="ssub" style="max-width:500px;margin:10px auto 0">
+        Система из 12 аттестаций — от A1 до B1. Родители видят где сейчас ребёнок, что изучает и какая следующая цель.
+      </p>
+    </div>
+
+    <!-- Mini progress cards -->
+    <div class="prog-cards">
+      <div class="prog-card">
+        <div class="prog-card-icon">🌱</div>
+        <div class="prog-card-level">A1</div>
+        <div class="prog-card-title">Аттестации 1–4</div>
+        <div class="prog-card-desc">Приветствия, Present Simple, семья, еда. Базовый английский</div>
+      </div>
+      <div class="prog-card">
+        <div class="prog-card-icon">🔵</div>
+        <div class="prog-card-level">A2</div>
+        <div class="prog-card-title">Аттестации 5–8</div>
+        <div class="prog-card-desc">Past Simple, будущее время, сравнения. Разговорный английский</div>
+      </div>
+      <div class="prog-card prog-card-active">
+        <div class="prog-card-icon">🏅</div>
+        <div class="prog-card-level">A2+</div>
+        <div class="prog-card-title">Аттестации 9–10</div>
+        <div class="prog-card-desc">Present Perfect, условные предложения. Уверенная речь</div>
+      </div>
+      <div class="prog-card">
+        <div class="prog-card-icon">🏆</div>
+        <div class="prog-card-level">B1</div>
+        <div class="prog-card-title">Аттестации 11–12</div>
+        <div class="prog-card-desc">Passive Voice, сложные конструкции. Полная программа</div>
+      </div>
+    </div>
+
+    <!-- Stats row -->
+    <div class="prog-stats">
+      <div class="prog-stat"><span class="prog-stat-val">70</span><span class="prog-stat-lbl">уроков</span></div>
+      <div class="prog-stat"><span class="prog-stat-val">12</span><span class="prog-stat-lbl">аттестаций</span></div>
+      <div class="prog-stat"><span class="prog-stat-val">≈1</span><span class="prog-stat-lbl">год программы</span></div>
+      <div class="prog-stat"><span class="prog-stat-val">A1→B1</span><span class="prog-stat-lbl">уровень</span></div>
+    </div>
+
+    <!-- CTA -->
+    <div style="text-align:center;margin-top:32px">
+      <a href="/progress" class="btn-prog-link">
+        📊 Посмотреть прогресс учеников →
+      </a>
+      <p style="font-size:13px;color:rgba(255,255,255,.4);margin-top:10px">
+        Только для учеников школы — показываем реальный прогресс каждого ребёнка
+      </p>
     </div>
   </div>
 </section>
