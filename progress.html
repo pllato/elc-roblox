@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ELC Kids — Прогресс учеников</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --bg:#0f0e1a;--bg2:#1a1830;--bg3:#231f38;--bg4:#2d2848;
+    --t1:#f0eefc;--t2:#b8b4d4;--t3:#6e6a8a;
+    --ac:#F7941D;--ac2:#6DC21B;--gn:#22c55e;--am:#f5c842;--rd:#f05975;--tl:#38bdf8;
+    --r:10px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Nunito Sans',sans-serif;background:var(--bg);color:var(--t1);min-height:100vh}
+
+  /* Header */
+  .header{background:linear-gradient(135deg,#1a1830 0%,#231f38 100%);border-bottom:1px solid rgba(124,92,252,.2);padding:24px 20px;text-align:center;position:relative;overflow:hidden}
+  .header::before{content:'';position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:400px;height:200px;background:radial-gradient(ellipse,rgba(124,92,252,.15) 0%,transparent 70%);pointer-events:none}
+  .logo{font-family:'Nunito',sans-serif;font-size:28px;font-weight:900;background:linear-gradient(135deg,#F7941D,#6DC21B);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .logo-sub{font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;color:rgba(255,255,255,.4);margin-top:-4px}
+  .header-back{position:absolute;left:20px;top:24px;font-size:13px;color:rgba(255,255,255,.5);text-decoration:none;font-weight:600;transition:color .15s}
+  .header-back:hover{color:#F7941D}
+  .header-sub{font-size:14px;color:var(--t2);margin-top:4px}
+  .header-desc{font-size:12px;color:var(--t3);margin-top:6px;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.5}
+
+  /* Container */
+  .container{max-width:900px;margin:0 auto;padding:24px 16px}
+
+  /* Student selector */
+  .student-filter{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px;align-items:center}
+  .filter-label{font-size:12px;color:var(--t3);white-space:nowrap}
+  .filter-input{background:var(--bg3);border:1px solid rgba(124,92,252,.3);border-radius:8px;color:var(--t1);font-family:inherit;font-size:13px;padding:7px 12px;outline:none;flex:1;min-width:180px}
+  .filter-input:focus{border-color:var(--ac)}
+
+  /* Stats bar */
+  .stats-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:24px}
+  .stat-card{background:var(--bg3);border:1px solid rgba(124,92,252,.15);border-radius:12px;padding:14px;text-align:center}
+  .stat-val{font-family:'Nunito',sans-serif;font-size:24px;font-weight:800;color:var(--ac2)}
+  .stat-lbl{font-size:11px;color:var(--t3);margin-top:2px}
+
+  /* Student card */
+  .stu-card{background:var(--bg2);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:18px;margin-bottom:12px;transition:transform .2s,box-shadow .2s}
+  .stu-card:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,.3)}
+  .stu-header{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+  .stu-avatar{width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--ac)}
+  .stu-avatar-placeholder{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--ac),var(--tl));display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;font-size:18px;font-weight:800;color:#fff;flex-shrink:0}
+  .stu-name{font-family:'Nunito',sans-serif;font-size:16px;font-weight:800}
+  .stu-meta{font-size:11px;color:var(--t3);margin-top:2px}
+  .stu-badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;margin-top:4px}
+
+  /* Progress bar */
+  .progress-wrap{margin-bottom:10px}
+  .progress-label{display:flex;justify-content:space-between;font-size:11px;color:var(--t3);margin-bottom:4px}
+  .progress-bar{height:8px;background:var(--bg4);border-radius:4px;overflow:hidden}
+  .progress-fill{height:100%;border-radius:4px;transition:width .5s ease;background:linear-gradient(90deg,#F7941D,#6DC21B)}
+
+  /* Attestation dots */
+  .att-dots{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+  .att-dot{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;cursor:default;position:relative;transition:transform .15s}
+  .att-dot:hover{transform:scale(1.1)}
+  .att-dot-passed{color:#fff}
+  .att-dot-failed{background:rgba(240,89,117,.15)!important;color:var(--rd);border:1px solid rgba(240,89,117,.3)}
+  .att-dot-invited{background:rgba(245,200,66,.12)!important;color:var(--am);border:1px solid rgba(245,200,66,.3)}
+  .att-dot-none{background:var(--bg4);color:var(--t3);border:1px solid rgba(255,255,255,.08)}
+
+  /* Teacher block */
+  .teacher-block{display:flex;align-items:center;gap:10px;background:var(--bg3);border-radius:10px;padding:8px 12px;margin-top:10px}
+  .teacher-photo{width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid rgba(124,92,252,.4)}
+  .teacher-photo-ph{width:36px;height:36px;border-radius:50%;background:var(--bg4);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--t3)}
+
+  /* Program section */
+  .section-title{font-family:'Nunito',sans-serif;font-size:18px;font-weight:800;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .att-program-card{background:var(--bg2);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:14px 16px;margin-bottom:8px;cursor:pointer;transition:border-color .2s}
+  .att-program-card:hover,.att-program-card.open{border-color:rgba(124,92,252,.4)}
+  .att-program-header{display:flex;align-items:center;gap:10px;justify-content:space-between}
+  .att-program-badge{font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;background:rgba(255,255,255,.08)}
+  .att-program-body{display:none;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.06)}
+  .att-program-card.open .att-program-body{display:block}
+  .words-grid{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+  .word-chip{background:var(--bg4);border-radius:6px;padding:2px 8px;font-size:11px;color:var(--t2)}
+  .grammar-list{list-style:none;display:flex;flex-direction:column;gap:4px;margin-bottom:10px}
+  .grammar-list li{font-size:12px;color:var(--t2);padding-left:12px;position:relative}
+  .grammar-list li::before{content:'→';position:absolute;left:0;color:var(--ac);font-size:10px}
+  .conv-block{background:var(--bg3);border-radius:8px;padding:10px 12px;margin-top:4px;font-size:12px;color:var(--t2);line-height:1.8;font-style:italic}
+
+  /* Loading */
+  .loading{text-align:center;padding:60px;color:var(--t3);font-size:14px}
+  .spinner{width:32px;height:32px;border:3px solid rgba(124,92,252,.3);border-top-color:var(--ac);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 12px}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* Responsive */
+  @media(max-width:600px){
+    .stu-card{padding:14px}
+    .att-dot{width:26px;height:26px;font-size:9px}
+    .stat-val{font-size:20px}
+  }
+
+  /* Footer */
+  .footer{text-align:center;padding:30px 20px;color:var(--t3);font-size:12px;border-top:1px solid rgba(255,255,255,.05);margin-top:30px}
+  .footer a{color:var(--ac2);text-decoration:none}
+
+  /* Pill tabs */
+  .pill-tabs{display:flex;gap:4px;background:var(--bg3);border-radius:10px;padding:4px;margin-bottom:20px}
+  .pill-tab{flex:1;padding:8px;text-align:center;border-radius:7px;cursor:pointer;font-size:12px;font-weight:700;color:var(--t3);transition:all .15s;border:none;background:none;font-family:inherit}
+  .pill-tab.active{background:var(--ac);color:#fff}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a href="/" class="header-back">← На главную</a>
+  <div class="logo">🎮 ELC Kids</div>
+  <div class="logo-sub">Roblox English</div>
+  <div class="header-sub">Прогресс учеников</div>
+  <div class="header-desc">70 уроков · 12 аттестаций · A1 → B1 · Следите за прогрессом ребёнка в реальном времени</div>
+</div>
+
+<div class="container">
+  <div id="loading" class="loading">
+    <div class="spinner"></div>
+    Загрузка данных...
+  </div>
+
+  <div id="app" style="display:none">
+    <!-- Stats -->
+    <div class="stats-bar" id="stats-bar"></div>
+
+    <!-- Tabs -->
+    <div class="pill-tabs">
+      <button class="pill-tab active" onclick="showTab('students')">👥 Ученики</button>
+      <button class="pill-tab" onclick="showTab('program')">📋 Программа</button>
+    </div>
+
+    <!-- Students tab -->
+    <div id="tab-students">
+      <div class="student-filter">
+        <span class="filter-label">🔍</span>
+        <input class="filter-input" id="search-input" placeholder="Поиск по имени..." oninput="renderStudents()"/>
+      </div>
+      <div id="students-list"></div>
+    </div>
+
+    <!-- Program tab -->
+    <div id="tab-program" style="display:none">
+      <div class="section-title">📋 Все 12 аттестаций — полная программа</div>
+      <div id="program-list"></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>ELC Kids Roblox English — онлайн школа английского языка для детей в Алматы</p>
+  <p style="margin-top:6px">
+    <a href="https://elc-kids.kz">elc-kids.kz</a> · 
+    <a href="https://wa.me/77074569118">+7 707 456 9118</a> · 
+    <a href="https://elc-kids.kz#form">Записать ребёнка →</a>
+  </p>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+<script>
+// Firebase config
+const firebaseConfig = {
+  databaseURL: 'https://elc-robeng-default-rtdb.firebaseio.com'
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+
+// ── Full attestation data ─────────────────────────────────────────
+const ATTESTATIONS = [
+  {id:1,title:'Аттестация 1',subtitle:'A1 Старт',lessons:'1–5',level:'A1',badge:'🌱 Начинающий',color:'#5e5c78',
+   words:['hello','hi','bye','name','friend','boy','girl','student','happy','my','your','his','her','mother','father','apple','car','house','one','two','three','red','blue','green'],
+   grammar:['My name is + N','I am / You are / He is + Adj','Possessive adjectives (my, your, his, her)','Articles a / an / the'],
+   conversations:['— Hello! What is your name? — My name is Alex. Nice to meet you!','— Are you happy? — Yes, I am a student.','— Is this your bag? — Yes, it is my bag.']},
+  {id:2,title:'Аттестация 2',subtitle:'A1 Основы',lessons:'6–10',level:'A1',badge:'🌿 Базовый',color:'#3fc8d8',
+   words:['apple','orange','banana','car','bus','room','chair','table','bed','desk','window','lamp','in','on','under','behind','next to','one to five','red','blue','green','yellow'],
+   grammar:['a / an / the (артикли)','Numbers 1–10 + Colors','There is / There are','Prepositions of place: in, on, under, behind, next to'],
+   conversations:['— What is this? — It is an apple.','— Is there a bed in the room? — Yes, there is.','— Where is the cat? — It is under the table.']},
+  {id:3,title:'Аттестация 3',subtitle:'A1 Present Simple',lessons:'11–15',level:'A1',badge:'📗 A1 Уровень',color:'#22c55e',
+   words:['like','love','play','eat','drink','read','watch','go','have','see','likes','plays','eats','don\'t','doesn\'t','what','where','when','who','wake up','sleep','morning','evening'],
+   grammar:['Present Simple: I/You + V','Present Simple: He/She + V+s','Negatives: don\'t / doesn\'t','Wh-questions: What/Where/When + do/does'],
+   conversations:['— What do you like? — I like games.','— Does she like milk? — Yes, she does.','— Do you like fish? — No, I don\'t.','— What do you do in the morning? — I study.']},
+  {id:4,title:'Аттестация 4 ✦',subtitle:'A1 Завершение',lessons:'16–20',level:'A1',badge:'⭐ A1 Завершён',color:'#f5c842',
+   words:['parents','children','grandma','grandpa','cousin','uncle','aunt','kitchen','bathroom','bedroom','living room','bread','milk','water','juice','rice','meat','fish','dog','cat','bird','big','small','fast','slow'],
+   grammar:['This is my… / These are my… (семья)','There is/are + place (дом)','I like / I don\'t like + N','It is + adjective (животные)','Весь материал A1 — свободный диалог'],
+   conversations:['— Who is this? — This is my grandma.','— There is a TV in my room.','— What do you like to eat? — I like fruit.']},
+  {id:5,title:'Аттестация 5',subtitle:'A2 Прошедшее',lessons:'21–25',level:'A2',badge:'🔵 A2 Старт',color:'#a87fff',
+   words:['yesterday','last night','last week','ago','played','watched','cleaned','walked','went','saw','ate','drank','came','took','made','did','had','got','swim','run','jump','speak','sing','dance'],
+   grammar:['Past Simple: was / were','Past Simple: V-ed (regular)','Irregular verbs: go-went, see-saw, eat-ate…','Can / Can\'t + V (ability)'],
+   conversations:['— Where were you yesterday? — I was at home.','— What did you do? — I watched TV.','— Where did you go? — I went to the park.','— Can you swim? — Yes, I can.']},
+  {id:6,title:'Аттестация 6',subtitle:'A2 Будущее',lessons:'26–30',level:'A2',badge:'🔷 A2 Развитие',color:'#3b82f6',
+   words:['must','mustn\'t','rule','stop','listen','tomorrow','plan','travel','visit','water','milk','bread','rice','sugar','salt','many','much','people','money','big','small','tall','short','faster'],
+   grammar:['Must / Mustn\'t (rules)','Going to + V (future plans)','Countable / Uncountable + some/any','How much / How many','Comparatives: bigger, faster, more interesting'],
+   conversations:['— What must we do? — We must listen.','— What are you going to do? — I am going to study.','— Do we have any milk? — Yes, we have some.','— Which is bigger? — The dog is bigger than the cat.']},
+  {id:7,title:'Аттестация 7',subtitle:'A2 Непрерывное',lessons:'31–35',level:'A2',badge:'💠 A2 Прогресс',color:'#06b6d4',
+   words:['best','worst','biggest','smallest','fastest','tallest','now','running','eating','playing','studying','always','usually','often','sometimes','never','at','on','in','Monday','left','right','straight','near','far'],
+   grammar:['Superlatives: the biggest, the most…','Present Continuous: am/is/are + V-ing','Present Simple vs Continuous','Prepositions of time: at/on/in','Directions: go straight, turn left'],
+   conversations:['— Who is the tallest? — He is the tallest.','— What are you doing now? — I am studying.','— What do you do every day? — I study. What now? — I am resting.']},
+  {id:8,title:'Аттестация 8 ✦',subtitle:'A2 Завершение',lessons:'36–40',level:'A2',badge:'🌟 A2 Завершён',color:'#f59e0b',
+   words:['how often','how long','what time','well','badly','fast','slowly','carefully','happily','like','love','hate','playing','reading','watching','cooking','swimming','come','help','sit','please','sorry','sure'],
+   grammar:['Extended Wh-questions','Adverbs of manner: quickly, carefully, well','Like/love/hate + -ing','Invitations: Can you…? / Let\'s + V'],
+   conversations:['— How often do you study? — Every day.','— How do you speak English? — Slowly.','— What do you like doing? — I like playing games.','— Can you help me? — Sure!']},
+  {id:9,title:'Аттестация 9',subtitle:'Pre-Int Опыт',lessons:'41–45',level:'A2+',badge:'🏅 Pre-Int',color:'#8b5cf6',
+   words:['while','when','suddenly','happened','fell','broke','ever','never','already','just','yet','been','done','seen','visited','today','this week','recently','for','since','hour','year','long'],
+   grammar:['Past Continuous: was/were + V-ing','Past Simple vs Past Continuous (while/when)','Present Perfect: have/has + V3','Have you ever + V3?','For + period / Since + point'],
+   conversations:['— What were you doing at 7 pm? — I was watching TV.','— What happened? — I was walking when I fell.','— Have you ever been abroad? — Yes, I have.','— How long have you lived here? — For five years.']},
+  {id:10,title:'Аттестация 10',subtitle:'Pre-Int Условия',lessons:'46–50',level:'A2+',badge:'🎖 Pre-Int+',color:'#ec4899',
+   words:['think','promise','decide','probably','plan','future','soon','if','heat','ice','melt','burn','exam','study','pass','fail','help','call','should','advice','healthy','sleep','exercise','tired'],
+   grammar:['Future: will (promise) vs going to (plan)','Zero Conditional: If + Present, Present','First Conditional: If + Present, will + V','Modal: should / shouldn\'t'],
+   conversations:['— I think it will rain. — I am going to stay home.','— What happens if you heat ice? — It melts.','— If I study, will I pass? — Yes, you will.','— I am tired. — You should rest.']},
+  {id:11,title:'Аттестация 11',subtitle:'Pre-Int Сложное',lessons:'51–60',level:'B1',badge:'🥇 B1 Старт',color:'#f97316',
+   words:['made','built','cleaned','used','sold','produced','found','more','less','better','cheaper','too','enough','enjoy','want','decide','stop','try','who','which','that','said','told','used to','childhood'],
+   grammar:['Passive Voice: am/is/are + V3 и was/were + V3','Too + adj / adj + enough','Gerund vs Infinitive','Relative clauses: who/which/that','Reported Speech: said that…','Used to + V'],
+   conversations:['— Where is it made? — It is made in China.','— It is too cold. But it is warm enough.','— I enjoy learning English.','— This is a movie that I like.','— He said he was tired.','— I used to play outside every day.']},
+  {id:12,title:'Аттестация 12 ✦✦',subtitle:'B1 Финал',lessons:'61–70',level:'B1',badge:'🏆 B1 Уровень',color:'#ef4444',
+   words:['if','dream','money','travel','rich','wish','better','taller','get up','wake up','turn on','turn off','look for','and','but','because','although','however','therefore','think','believe','opinion','kind','friendly','honest','confident'],
+   grammar:['Second Conditional: If + Past Simple, would + V','Wish + Past Simple','Phrasal verbs: get up, turn on, look for','Linking words: but, because, although, however','Opinion: I think that… / In my opinion…'],
+   conversations:['— If you had money, what would you do? — I would travel the world.','— I wish I had more time.','— Turn on the light, please.','— I was tired, but I continued.','— In my opinion, it is very useful.']}
+];
+
+// ── App state ─────────────────────────────────────────────────────
+let allEnrollments = [], allStudents = [], allTeachers = [], allAtt = {};
+
+async function loadData(){
+  try {
+    const [enrSnap, stuSnap, tSnap] = await Promise.all([
+      db.ref('eduSchedule/enrollments').once('value'),
+      db.ref('eduSchedule/students').once('value'),
+      db.ref('eduSchedule/teachers').once('value'),
+    ]);
+    allEnrollments = enrSnap.val() ? Object.values(enrSnap.val()) : [];
+    allStudents    = stuSnap.val() ? Object.values(stuSnap.val()) : [];
+    allTeachers    = tSnap.val()  ? Object.values(tSnap.val())  : [];
+
+    const today = new Date().toISOString().slice(0,10);
+    allEnrollments = allEnrollments.filter(e=>!e.inactive && e.dateEnd>=today);
+
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    renderStats();
+    renderStudents();
+    renderProgram();
+  } catch(err){
+    document.getElementById('loading').innerHTML = `<div style="color:#f05975">Ошибка загрузки: ${err.message}</div>`;
+  }
+}
+
+function student(id){ return allStudents.find(s=>s.id===id)||{}; }
+function teacher(id){ return allTeachers.find(t=>String(t.id)===String(id))||{}; }
+function getAtts(e){ return e.attestations||{}; }
+function passedCount(e){ return ATTESTATIONS.filter(a=>getAtts(e)['att'+a.id]?.status==='passed').length; }
+
+function initials(name){ return (name||'?').split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase(); }
+
+function renderStats(){
+  const total = allEnrollments.length;
+  const avg = total ? Math.round(allEnrollments.reduce((s,e)=>s+passedCount(e),0)/total*10)/10 : 0;
+  const maxPassed = Math.max(...allEnrollments.map(e=>passedCount(e)),0);
+  const done = allEnrollments.filter(e=>passedCount(e)>=12).length;
+
+  document.getElementById('stats-bar').innerHTML = `
+    <div class="stat-card"><div class="stat-val">${total}</div><div class="stat-lbl">Активных учеников</div></div>
+    <div class="stat-card"><div class="stat-val">${avg}</div><div class="stat-lbl">Среднее аттест.</div></div>
+    <div class="stat-card"><div class="stat-val">${maxPassed}</div><div class="stat-lbl">Макс. прогресс</div></div>
+    <div class="stat-card"><div class="stat-val">${done}</div><div class="stat-lbl">Завершили программу</div></div>`;
+}
+
+function renderStudents(){
+  const q = document.getElementById('search-input').value.toLowerCase();
+  let items = allEnrollments.filter(e=>{
+    const st = student(e.studentId);
+    return !q || (st.name||'').toLowerCase().includes(q);
+  }).sort((a,b)=>passedCount(b)-passedCount(a));
+
+  document.getElementById('students-list').innerHTML = items.length
+    ? items.map(e=>buildStudentCard(e)).join('')
+    : '<div style="text-align:center;padding:40px;color:#6e6a8a">Ученики не найдены</div>';
+}
+
+function buildStudentCard(e){
+  const st  = student(e.studentId);
+  const t   = teacher(e.teacherId);
+  const atts = getAtts(e);
+  const passed = passedCount(e);
+  const pct  = Math.round(passed/12*100);
+  const nextAtt = ATTESTATIONS.find(a=>atts['att'+a.id]?.status!=='passed');
+  const topBadge = passed>0 ? ATTESTATIONS[passed-1] : null;
+
+  const avatarHtml = st.photo
+    ? `<img class="stu-avatar" src="${st.photo}" alt="${st.name}" onerror="this.style.display='none'">`
+    : `<div class="stu-avatar-placeholder">${initials(st.name)}</div>`;
+
+  const teacherHtml = t.id ? `<div class="teacher-block">
+    ${t.photo ? `<img class="teacher-photo" src="${t.photo}" alt="${t.name}">` : `<div class="teacher-photo-ph">${initials(t.name)}</div>`}
+    <div>
+      <div style="font-size:12px;font-weight:700;color:#b8b4d4">${t.name||'—'}</div>
+      <div style="font-size:10px;color:#6e6a8a">Преподаватель</div>
+    </div>
+  </div>` : '';
+
+  const dotsHtml = ATTESTATIONS.map(a=>{
+    const r = atts['att'+a.id];
+    const s = r?.status||'none';
+    if(s==='passed')  return `<div class="att-dot att-dot-passed" style="background:${a.color}" title="${a.title} — ${a.badge}">✓</div>`;
+    if(s==='failed')  return `<div class="att-dot att-dot-failed" title="${a.title} — Повторная попытка">✗</div>`;
+    if(s==='invited') return `<div class="att-dot att-dot-invited" title="${a.title} — Приглашён">📩</div>`;
+    return `<div class="att-dot att-dot-none" title="${a.title}\n${a.subtitle}">${a.id}</div>`;
+  }).join('');
+
+  return `<div class="stu-card">
+    <div class="stu-header">
+      ${avatarHtml}
+      <div style="flex:1;min-width:0">
+        <div class="stu-name">${st.name||'—'}</div>
+        ${topBadge ? `<div class="stu-badge" style="background:${topBadge.color}22;color:${topBadge.color};border:1px solid ${topBadge.color}44">${topBadge.badge}</div>` : '<div class="stu-badge" style="background:rgba(255,255,255,.06);color:#6e6a8a">Начинает путь 🌱</div>'}
+      </div>
+      <div style="text-align:right;flex-shrink:0">
+        <div style="font-size:22px;font-weight:800;color:#a87fff;font-family:Nunito">${passed}/12</div>
+        <div style="font-size:10px;color:#6e6a8a">аттестаций</div>
+      </div>
+    </div>
+    <div class="progress-wrap">
+      <div class="progress-label"><span>Прогресс программы</span><span>${pct}%</span></div>
+      <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+    </div>
+    <div class="att-dots">${dotsHtml}</div>
+    ${nextAtt ? `<div style="margin-top:8px;font-size:11px;color:#6e6a8a">⏭ Следующая: <span style="color:${nextAtt.color};font-weight:700">${nextAtt.badge}</span> — ${nextAtt.title}</div>` : '<div style="margin-top:8px;font-size:11px;color:#22c55e;font-weight:700">🏆 Программа завершена!</div>'}
+    ${teacherHtml}
+  </div>`;
+}
+
+function renderProgram(){
+  document.getElementById('program-list').innerHTML = ATTESTATIONS.map(a=>`
+    <div class="att-program-card" onclick="toggleAtt(this)">
+      <div class="att-program-header">
+        <div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="font-size:20px">${a.badge.split(' ')[0]}</span>
+            <div>
+              <div style="font-size:13px;font-weight:800;color:#f0eefc">${a.title}</div>
+              <div style="font-size:11px;color:#6e6a8a">Уроки ${a.lessons} · ${a.subtitle}</div>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="att-program-badge" style="color:${a.color};background:${a.color}22;border:1px solid ${a.color}33">${a.level}</span>
+          <span style="color:#6e6a8a;font-size:16px">›</span>
+        </div>
+      </div>
+      <div class="att-program-body">
+        <div style="font-size:11px;font-weight:700;color:#6e6a8a;margin-bottom:5px;text-transform:uppercase;letter-spacing:.06em">📚 Слова и выражения</div>
+        <div class="words-grid">${a.words.map(w=>`<span class="word-chip">${w}</span>`).join('')}</div>
+        <div style="font-size:11px;font-weight:700;color:#6e6a8a;margin-bottom:5px;text-transform:uppercase;letter-spacing:.06em">📐 Грамматика</div>
+        <ul class="grammar-list">${a.grammar.map(g=>`<li>${g}</li>`).join('')}</ul>
+        <div style="font-size:11px;font-weight:700;color:#6e6a8a;margin-bottom:5px;text-transform:uppercase;letter-spacing:.06em">💬 Примеры диалогов</div>
+        ${a.conversations.map(c=>`<div class="conv-block">${c}</div>`).join('')}
+      </div>
+    </div>`).join('');
+}
+
+function toggleAtt(el){
+  el.classList.toggle('open');
+}
+
+function showTab(tab){
+  document.getElementById('tab-students').style.display = tab==='students'?'':'none';
+  document.getElementById('tab-program').style.display  = tab==='program'?'':'none';
+  document.querySelectorAll('.pill-tab').forEach((b,i)=>b.classList.toggle('active',[tab==='students',tab==='program'][i]));
+}
+
+loadData();
+</script>
+</body>
+</html>
